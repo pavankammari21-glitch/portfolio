@@ -1,5 +1,6 @@
 import time
 import os
+import json
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, Response, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -179,20 +180,24 @@ async def serve_spa():
 async def root_health():
     return {"status": "online", "message": "FastAPI Portfolio Engine is running smoothly."}
 
-# Pre-compile OpenAPI schema at startup for 0ms latency and 100% serverless reliability
+# Pre-serialize OpenAPI schema bytes at startup for zero runtime overhead
 try:
-    _cached_openapi_schema = app.openapi()
+    _cached_openapi_dict = app.openapi()
+    _cached_openapi_json_bytes = json.dumps(_cached_openapi_dict).encode("utf-8")
 except Exception as e:
     print(f"[OpenAPI Generation Warning]: {e}")
-    _cached_openapi_schema = {}
+    _cached_openapi_dict = {}
+    _cached_openapi_json_bytes = b"{}"
 
 @app.get("/openapi.json", include_in_schema=False)
+@app.get("/api/openapi.json", include_in_schema=False)
 async def custom_openapi_json():
-    global _cached_openapi_schema
-    if not _cached_openapi_schema:
-        _cached_openapi_schema = app.openapi()
-    return JSONResponse(
-        content=_cached_openapi_schema,
+    global _cached_openapi_json_bytes
+    if not _cached_openapi_json_bytes or _cached_openapi_json_bytes == b"{}":
+        _cached_openapi_json_bytes = json.dumps(app.openapi()).encode("utf-8")
+    return Response(
+        content=_cached_openapi_json_bytes,
+        media_type="application/json",
         headers={
             "Cache-Control": "public, max-age=3600",
             "Access-Control-Allow-Origin": "*",
