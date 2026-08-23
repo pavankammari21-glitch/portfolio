@@ -4,7 +4,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, Response, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+from fastapi.openapi.docs import get_swagger_ui_html, get_redoc_html
 
 from app.config import settings
 from app.database import engine, Base, SessionLocal
@@ -57,8 +58,9 @@ app = FastAPI(
     description=settings.DESCRIPTION,
     lifespan=lifespan,
     openapi_tags=tags_metadata,
-    docs_url="/docs",
-    redoc_url="/redoc",
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
     contact={
         "name": f"{settings.OWNER_NAME} - Developer",
         "email": settings.ADMIN_EMAIL,
@@ -176,3 +178,22 @@ async def serve_spa():
 @app.get("/api/health", tags=["Health & Info"])
 async def root_health():
     return {"status": "online", "message": "FastAPI Portfolio Engine is running smoothly."}
+
+@app.get("/openapi.json", include_in_schema=False)
+async def custom_openapi_json():
+    return JSONResponse(content=app.openapi())
+
+@app.get("/docs", include_in_schema=False)
+async def custom_swagger_ui():
+    return get_swagger_ui_html(
+        openapi_url="/openapi.json",
+        title=f"{settings.PROJECT_NAME} - Swagger UI",
+        swagger_favicon_url="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
+    )
+
+@app.get("/redoc", include_in_schema=False)
+async def custom_redoc_ui():
+    return get_redoc_html(
+        openapi_url="/openapi.json",
+        title=f"{settings.PROJECT_NAME} - ReDoc"
+    )
