@@ -90,6 +90,24 @@ async def add_process_time_and_log_header(request: Request, call_next):
     response.headers["X-Powered-By"] = "FastAPI & Python 3.11"
     return response
 
+# C. Vercel Serverless Path Normalizer Middleware
+@app.middleware("http")
+async def normalize_vercel_path(request: Request, call_next):
+    raw_path = request.scope.get("path", "")
+    if raw_path.startswith("/api/index.py") or raw_path.startswith("/api/index"):
+        matched = (
+            request.headers.get("x-vercel-matched-path")
+            or request.headers.get("x-matched-path")
+            or request.headers.get("x-invoke-path")
+            or request.headers.get("x-forwarded-uri")
+        )
+        if matched and not (matched.startswith("/api/index.py") or matched.startswith("/api/index")):
+            request.scope["path"] = matched.split("?")[0]
+        else:
+            suffix = raw_path.replace("/api/index.py", "").replace("/api/index", "")
+            request.scope["path"] = suffix if suffix else "/"
+    return await call_next(request)
+
 # --- 4. Register Custom Exception Handlers ---
 register_exception_handlers(app)
 
@@ -109,6 +127,8 @@ if os.path.exists(static_dir):
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 @app.get("/", tags=["Health & Info"], response_class=HTMLResponse)
+@app.get("/api/index.py", include_in_schema=False, response_class=HTMLResponse)
+@app.get("/api/index", include_in_schema=False, response_class=HTMLResponse)
 async def serve_spa():
     index_path = os.path.join(static_dir, "index.html")
     if os.path.exists(index_path):
