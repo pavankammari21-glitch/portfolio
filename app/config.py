@@ -11,9 +11,9 @@ class Settings(BaseModel):
         "Dependency Injection, OAuth2 JWT Authentication, Background Tasks, WebSockets, "
         "SQLite Persistence, and Custom Middlewares."
     )
-    ADMIN_USERNAME: str = os.getenv("ADMIN_USERNAME", "pavan_admin")
-    ADMIN_PASSWORD: str = os.getenv("ADMIN_PASSWORD", "fastapi_mastery_2026")
-    ADMIN_EMAIL: str = os.getenv("ADMIN_EMAIL", "pavan.dev.engineer@gmail.com")
+    ADMIN_USERNAME: str = os.getenv("ADMIN_USERNAME", "pavan_admin") or "pavan_admin"
+    ADMIN_PASSWORD: str = os.getenv("ADMIN_PASSWORD", "fastapi_mastery_2026") or "fastapi_mastery_2026"
+    ADMIN_EMAIL: str = os.getenv("ADMIN_EMAIL", "pavan.dev.engineer@gmail.com") if (os.getenv("ADMIN_EMAIL") and "@" in os.getenv("ADMIN_EMAIL", "")) else "pavan.dev.engineer@gmail.com"
     
     JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "super-secret-fastapi-jwt-key-change-in-prod-0987654321")
     JWT_ALGORITHM: str = "HS256"
