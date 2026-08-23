@@ -21,7 +21,12 @@ class Settings(BaseModel):
     
     DATABASE_URL: str = os.getenv(
         "DATABASE_URL",
-        "sqlite:////tmp/portfolio.db" if os.getenv("VERCEL") == "1" else "sqlite:///./portfolio.db"
+        "sqlite:////tmp/portfolio.db" if (
+            os.getenv("VERCEL")
+            or os.getenv("VERCEL_ENV")
+            or os.getenv("AWS_LAMBDA_FUNCTION_NAME")
+            or os.getenv("LAMBDA_TASK_ROOT")
+        ) else "sqlite:///./portfolio.db"
     )
     ALLOWED_ORIGINS: list[str] = ["*"]
     

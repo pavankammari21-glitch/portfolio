@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 
 from app.config import settings
 from app.database import engine, Base, SessionLocal
@@ -107,12 +107,13 @@ static_dir = os.path.join(os.path.dirname(__file__), "static")
 if os.path.exists(static_dir):
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
-@app.get("/", tags=["Health & Info"], response_class=FileResponse)
+@app.get("/", tags=["Health & Info"], response_class=HTMLResponse)
 async def serve_spa():
     index_path = os.path.join(static_dir, "index.html")
     if os.path.exists(index_path):
-        return FileResponse(index_path)
-    return {"message": "FastAPI Portfolio API is running. Go to /docs for interactive testing."}
+        with open(index_path, "r", encoding="utf-8") as f:
+            return HTMLResponse(content=f.read())
+    return HTMLResponse(content="<h1>FastAPI Portfolio API is running. Go to <a href='/docs'>/docs</a></h1>")
 
 @app.get("/api/health", tags=["Health & Info"])
 async def root_health():
