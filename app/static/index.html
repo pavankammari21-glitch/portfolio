@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavan — Senior Backend & FastAPI Engineer | Portfolio & API Platform</title>
+  <meta name="description" content="Official portfolio and live API platform of Pavan. Built with FastAPI, Pydantic V2, AsyncIO, WebSockets, Docker, and Python 3.11.">
+  <meta name="keywords" content="FastAPI, Python, Backend Engineer, Developer Portfolio, REST API, WebSockets, Pydantic">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-badge">FASTAPI 2.0</span>
+        <span>PAVAN.DEV</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills Matrix</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#timeline" class="nav-link">Experience</a></li>
+        <li><a href="#sandbox" class="nav-link">API Sandbox</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="live-status-pill" id="server-status-pill">
+          <span class="pulse-dot"></span>
+          <span>CONNECTING...</span>
+        </div>
+        <a href="/docs" target="_blank" class="btn btn-outline btn-sm">
+          <span>📖 Swagger /docs</span>
+        </a>
+        <button class="btn btn-outline btn-sm" id="open-admin-btn">
+          <span>🔒 Admin</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-info">
+          <div class="hero-tag">
+            <span>⚡ PRODUCTION-GRADE FASTAPI & PYTHON BACKEND ARCHITECT</span>
+          </div>
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Pavan</span>.<br>
+            Engineering Resilient APIs & Distributed Systems.
+          </h1>
+          <p class="hero-subtitle">
+            Specializing in high-concurrency <strong>FastAPI microservices</strong>, asynchronous event-driven pipelines, 
+            vector RAG retrieval systems, and scalable cloud deployments.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              <span>🚀 Explore Projects</span>
+            </a>
+            <a href="#sandbox" class="btn btn-outline">
+              <span>🧪 Live API Sandbox</span>
+            </a>
+            <a href="/api/resume/download" target="_blank" class="btn btn-outline">
+              <span>📄 Download Resume (PDF)</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-terminal-wrapper">
+          <div class="hero-terminal-card glass-panel">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="terminal-title">fastapi_server.py &bull; Uvicorn Async Worker</span>
+              <span id="ws-latency" style="color:var(--accent-emerald);font-size:0.75rem;font-family:var(--font-code);">ping: 12ms</span>
+            </div>
+            <div class="terminal-body">
+              <span class="code-comment"># Live FastAPI Lifespan & Dependency Injection</span><br>
+              <span class="code-keyword">from</span> fastapi <span class="code-keyword">import</span> FastAPI, Depends, BackgroundTasks<br>
+              <span class="code-keyword">from</span> pydantic <span class="code-keyword">import</span> BaseModel, Field<br><br>
+              app = <span class="code-func">FastAPI</span>(title=<span class="code-str">"Pavan's Portfolio API"</span>)<br><br>
+              <span class="code-keyword">@app.get</span>(<span class="code-str">"/api/skills"</span>)<br>
+              <span class="code-keyword">async def</span> <span class="code-func">get_stack</span>(db = <span class="code-func">Depends</span>(get_db)):<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> db.query(Skill).all()<br><br>
+              <span class="code-comment"># Ready & Serving requests with sub-10ms latency</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Counter Bar -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card glass-panel">
+          <div class="stat-value" id="stat-projects-count">5+</div>
+          <div class="stat-label">Production Projects</div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="stat-value" id="stat-skills-count">18+</div>
+          <div class="stat-label">Core Technologies</div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="stat-value" id="stat-exp-count">4+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="stat-value" id="stat-apis-count">25+</div>
+          <div class="stat-label">Microservices Built</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Engineering Philosophy</div>
+        <h2 class="section-title">High Performance. Type-Safe. Cloud-Native.</h2>
+        <p class="section-desc">
+          I build backend platforms that don't just work—they scale gracefully under heavy load, maintain strict contract safety with Pydantic schemas, and run seamlessly across containerized cloud environments.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Matrix -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Technical Matrix</div>
+        <h2 class="section-title">Proficiencies & Tooling</h2>
+        <p class="section-desc">Dynamically queried from the FastAPI <code>/api/skills/categorized</code> endpoint.</p>
+      </div>
+
+      <div class="skills-tabs" id="skills-tabs">
+        <!-- Generated by JS -->
+      </div>
+
+      <div class="skills-grid" id="skills-grid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Showcase -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Flagship Work</div>
+        <h2 class="section-title">Engineered Solutions & APIs</h2>
+        <p class="section-desc">Explore projects with live filtering, architecture diagrams, and source repositories.</p>
+      </div>
+
+      <div class="project-filters" id="project-filters">
+        <!-- Generated by JS -->
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Career Timeline -->
+  <section class="section" id="timeline">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Career Path</div>
+        <h2 class="section-title">Experience & Milestones</h2>
+        <p class="section-desc">My professional journey in backend software engineering and cloud infrastructure.</p>
+      </div>
+
+      <div class="timeline" id="experience-timeline">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Live FastAPI Interactive Sandbox -->
+  <section class="section" id="sandbox">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Developer Playground</div>
+        <h2 class="section-title">Live Interactive FastAPI Sandbox</h2>
+        <p class="section-desc">
+          Test live FastAPI endpoints directly in your browser. Inspect status codes, response payloads, and the <code>X-Process-Time-Sec</code> header calculated by our custom middleware.
+        </p>
+      </div>
+
+      <div class="sandbox-card glass-panel">
+        <div class="sandbox-controls">
+          <select class="sandbox-select" id="sandbox-endpoint-select">
+            <!-- Populated by JS -->
+          </select>
+          <input type="text" class="sandbox-input" id="sandbox-url-input" readonly>
+          <button class="btn btn-primary" id="sandbox-execute-btn">▶ Send Request</button>
+        </div>
+
+        <textarea id="sandbox-body-input" class="form-control" style="margin-bottom:15px;display:none;font-family:var(--font-code);font-size:0.85rem;"></textarea>
+
+        <div class="sandbox-response-container">
+          <div class="sandbox-response-header">
+            <span id="sandbox-res-status">Status: Ready to execute</span>
+            <span id="sandbox-res-time">Server Process Time: --</span>
+          </div>
+          <pre class="sandbox-response-body" id="sandbox-res-body">// Click "Send Request" to test live FastAPI endpoint...</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section with BackgroundTasks -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Get In Touch</div>
+        <h2 class="section-title">Let's Build Something Resilient</h2>
+        <p class="section-desc">Submitting this form triggers a FastAPI <code>BackgroundTasks</code> worker to dispatch email notifications asynchronously.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-card glass-panel">
+          <h3>Contact Details</h3>
+          <p style="color:var(--text-muted);">Looking for a high-performing backend engineer or full-stack consultant? Feel free to reach out directly.</p>
+
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div style="font-weight:600;">Location</div>
+              <div style="color:var(--text-dim);font-size:0.9rem;">Hyderabad, India (Open to Remote Globally)</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div style="font-weight:600;">Email</div>
+              <div style="color:var(--text-dim);font-size:0.9rem;">pavan.dev.engineer@gmail.com</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">🐙</div>
+            <div>
+              <div style="font-weight:600;">GitHub</div>
+              <div style="color:var(--text-dim);font-size:0.9rem;">github.com (Open Source Contributor)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-card glass-panel">
+          <form id="contact-form">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Your Name *</label>
+              <input type="text" class="form-control" id="contact-name" placeholder="Alex Morgan" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address *</label>
+              <input type="email" class="form-control" id="contact-email" placeholder="alex@company.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-subject">Subject</label>
+              <input type="text" class="form-control" id="contact-subject" placeholder="FastAPI Project / Role Discussion" value="FastAPI Project Collaboration">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Your Message *</label>
+              <textarea class="form-control" id="contact-message" placeholder="Hi Pavan, we are looking for a FastAPI specialist..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="contact-submit-btn" style="width:100%;">
+              <span>🚀 Send Message (Async Background Task)</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p style="margin-bottom:8px;">
+        Designed & Engineered with ❤️ by <strong>Pavan</strong> using <strong>FastAPI 0.111.0</strong>, <strong>Python 3.11</strong>, <strong>Pydantic V2</strong>, and <strong>WebSockets</strong>.
+      </p>
+      <p style="color:var(--text-dim);font-size:0.8rem;">
+        &copy; 2026 Pavan. All Rights Reserved. Fully containerized with Docker & Cloud-Ready.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Architecture Detail Modal -->
+  <div class="modal-overlay" id="arch-modal">
+    <div class="modal-container glass-panel">
+      <div class="modal-header">
+        <h3 id="arch-modal-title" style="font-size:1.3rem;">Project Architecture</h3>
+        <button class="modal-close" onclick="document.getElementById('arch-modal').classList.remove('active')">&times;</button>
+      </div>
+      <div style="margin-bottom:16px;">
+        <h4 style="color:var(--text-muted);font-size:0.85rem;text-transform:uppercase;margin-bottom:6px;">Overview</h4>
+        <p id="arch-modal-desc" style="color:var(--text-main);font-size:0.95rem;"></p>
+      </div>
+      <div style="margin-bottom:16px;">
+        <h4 style="color:var(--accent-cyan);font-size:0.85rem;text-transform:uppercase;margin-bottom:6px;">Architecture & Design Patterns</h4>
+        <p id="arch-modal-notes" style="color:var(--text-muted);font-size:0.9rem;"></p>
+      </div>
+      <div>
+        <h4 style="color:var(--text-muted);font-size:0.85rem;text-transform:uppercase;margin-bottom:6px;">Tech Stack</h4>
+        <div id="arch-modal-stack" class="project-tags"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard / Login Modal -->
+  <div class="modal-overlay" id="admin-modal">
+    <div class="modal-container glass-panel">
+      <div class="modal-header">
+        <h3>🔒 Developer & Admin Console</h3>
+        <button class="modal-close" id="close-admin-btn">&times;</button>
+      </div>
+
+      <div id="admin-login-view">
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">
+          Authenticate with OAuth2 / JWT to view received contact messages and manage portfolio items.
+        </p>
+        <form id="admin-login-form">
+          <div class="form-group">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" id="admin-user" value="pavan_admin" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="admin-pass" value="fastapi_mastery_2026" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            <span>🔑 Login with OAuth2 / JWT</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="admin-dashboard-view" style="display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <h4 style="color:var(--accent-cyan);">📨 Inquiries Inbox</h4>
+          <button class="btn btn-outline btn-sm" id="admin-logout-btn">Logout</button>
+        </div>
+        <div id="admin-inbox-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/static/js/websocket.js"></script>
+  <script src="/static/js/sandbox.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

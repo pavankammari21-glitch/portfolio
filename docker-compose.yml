@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  portfolio-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pavan_fastapi_portfolio
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - DATABASE_URL=sqlite:///./portfolio.db
+      - JWT_SECRET_KEY=production-secure-fastapi-key-pavan-2026
+      - ADMIN_USERNAME=pavan_admin
+      - ADMIN_PASSWORD=fastapi_mastery_2026
+      - ADMIN_EMAIL=pavan.dev.engineer@gmail.com
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

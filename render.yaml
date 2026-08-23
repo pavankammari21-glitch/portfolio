@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: pavan-fastapi-portfolio
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: pavan_admin
+      - key: ADMIN_PASSWORD
+        value: fastapi_mastery_2026
+      - key: ADMIN_EMAIL
+        value: pavan.dev.engineer@gmail.com
