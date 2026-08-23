@@ -1,7 +1,7 @@
 import time
 import os
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, HTMLResponse
@@ -123,6 +123,33 @@ app.include_router(websocket_router)
 
 # --- 6. Mount Static Assets & Serve Frontend SPA ---
 static_dir = os.path.join(os.path.dirname(__file__), "static")
+
+@app.get("/static/{file_path:path}", include_in_schema=False)
+async def serve_static_files(file_path: str):
+    full_path = os.path.join(static_dir, file_path)
+    if os.path.exists(full_path) and os.path.isfile(full_path):
+        media_type = "text/plain"
+        if file_path.endswith(".css"):
+            media_type = "text/css"
+        elif file_path.endswith(".js"):
+            media_type = "application/javascript"
+        elif file_path.endswith(".png"):
+            media_type = "image/png"
+        elif file_path.endswith(".jpg") or file_path.endswith(".jpeg"):
+            media_type = "image/jpeg"
+        elif file_path.endswith(".svg"):
+            media_type = "image/svg+xml"
+        elif file_path.endswith(".html"):
+            media_type = "text/html"
+
+        with open(full_path, "rb") as f:
+            return Response(
+                content=f.read(),
+                media_type=media_type,
+                headers={"Cache-Control": "public, max-age=86400"}
+            )
+    raise HTTPException(status_code=404, detail="Static asset not found")
+
 if os.path.exists(static_dir):
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
