@@ -49,7 +49,6 @@ def seed_initial_data(db: Session):
         {"name": "Logistic Regression", "category": "Machine Learning & AI", "proficiency": 88, "experience_years": "", "icon": "📈", "is_primary": True},
 
         # Cloud & Tools
-        {"name": "AWS (AWS Educate)", "category": "Cloud & Tools", "proficiency": 88, "experience_years": "", "icon": "☁️", "is_primary": True},
         {"name": "Git & GitHub", "category": "Cloud & Tools", "proficiency": 92, "experience_years": "", "icon": "🐙", "is_primary": True},
         {"name": "Docker", "category": "Cloud & Tools", "proficiency": 86, "experience_years": "", "icon": "🐳", "is_primary": True},
     ]
@@ -182,19 +181,6 @@ def seed_initial_data(db: Session):
             ]),
             "skills_used": json.dumps(["Science", "Mathematics", "Problem Solving"]),
             "order_index": 3
-        },
-        {
-            "role_or_degree": "AWS Educate Cloud Computing Certification",
-            "organization": "Amazon Web Services (AWS)",
-            "period": "2024",
-            "location": "Online / Global",
-            "item_type": "certification",
-            "description": "Certified in cloud computing fundamentals, compute architectures, cloud storage, and serverless concepts on AWS.",
-            "key_achievements": json.dumps([
-                "Gained comprehensive understanding of cloud infrastructure, deployment, and cloud security concepts."
-            ]),
-            "skills_used": json.dumps(["AWS", "Cloud Computing", "Serverless", "Cloud Architecture"]),
-            "order_index": 4
         }
     ]
 
