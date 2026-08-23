@@ -300,7 +300,8 @@ function setupContactForm() {
         showToast(data.message, "success");
         form.reset();
       } else {
-        const errMsg = data.error?.message || "Failed to submit message";
+        const detailMsg = data.error?.details?.map(d => d.msg).join(", ");
+        const errMsg = detailMsg || data.error?.message || "Failed to submit message";
         showToast(errMsg, "error");
       }
     } catch (err) {
