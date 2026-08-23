@@ -75,7 +75,7 @@ async def download_resume_html(
     response.headers["X-Portfolio-Engine"] = "FastAPI-v2"
 
     skills_html = "".join([
-        f"<span style='display:inline-block;background:#1e293b;color:#38bdf8;padding:4px 10px;margin:3px;border-radius:4px;font-size:12px;'>{s.name} ({s.proficiency}%)</span>"
+        f"<span style='display:inline-block;background:#1e293b;color:#38bdf8;padding:6px 12px;margin:4px;border-radius:6px;font-size:13px;font-weight:500;'>{s.name}</span>"
         for s in skills
     ])
 
@@ -170,7 +170,7 @@ async def download_resume_html(
             <h2>Technical Expertise</h2>
             <div>{skills_html}</div>
 
-            <h2>Professional Experience</h2>
+            <h2>Education Qualification</h2>
             <div>{exp_html}</div>
 
             <h2>Featured Engineering Projects</h2>

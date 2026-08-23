@@ -1367,18 +1367,12 @@ function renderSkills(selectedCat) {
     const card = document.createElement("div");
     card.className = "skill-card glass-panel";
     card.innerHTML = `
-      <div class="skill-header">
+      <div class="skill-header" style="margin-bottom:0;justify-content:space-between;align-items:center;">
         <div class="skill-icon-name">
           <span class="skill-icon">${s.icon}</span>
           <span class="skill-name">${s.name}</span>
         </div>
-        <span class="skill-percent">${s.proficiency}%</span>
-      </div>
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill" style="width: ${s.proficiency}%;"></div>
-      </div>
-      <div class="skill-footer">
-        <span>${s.category}</span>
+        <span class="tag-pill" style="font-size:0.75rem;padding:3px 8px;margin:0;">${s.category}</span>
       </div>
     `;
     grid.appendChild(card);
