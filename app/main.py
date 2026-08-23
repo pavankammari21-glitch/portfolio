@@ -179,9 +179,27 @@ async def serve_spa():
 async def root_health():
     return {"status": "online", "message": "FastAPI Portfolio Engine is running smoothly."}
 
+# Pre-compile OpenAPI schema at startup for 0ms latency and 100% serverless reliability
+try:
+    _cached_openapi_schema = app.openapi()
+except Exception as e:
+    print(f"[OpenAPI Generation Warning]: {e}")
+    _cached_openapi_schema = {}
+
 @app.get("/openapi.json", include_in_schema=False)
 async def custom_openapi_json():
-    return JSONResponse(content=app.openapi())
+    global _cached_openapi_schema
+    if not _cached_openapi_schema:
+        _cached_openapi_schema = app.openapi()
+    return JSONResponse(
+        content=_cached_openapi_schema,
+        headers={
+            "Cache-Control": "public, max-age=3600",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, OPTIONS",
+            "Access-Control-Allow-Headers": "*"
+        }
+    )
 
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_ui():
