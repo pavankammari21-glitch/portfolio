@@ -23,39 +23,35 @@ def seed_initial_data(db: Session):
         admin.email = settings.ADMIN_EMAIL
         db.commit()
 
-    # 2. Seed Skills (Exact resume skills + what is used in this project)
+    # 2. Seed Skills (Exact resume skills: Python, Java, HTML, CSS, JS, MySQL, FastAPI, REST APIs, ML models, AWS, Git, Docker)
     skills_data = [
         # Programming Languages
-        {"name": "Python", "category": "Programming Languages", "proficiency": 95, "experience_years": "2+ years", "icon": "🐍", "is_primary": True},
-        {"name": "Java", "category": "Programming Languages", "proficiency": 85, "experience_years": "2+ years", "icon": "☕", "is_primary": True},
-        {"name": "JavaScript", "category": "Programming Languages", "proficiency": 85, "experience_years": "2+ years", "icon": "🟨", "is_primary": True},
+        {"name": "Python", "category": "Programming Languages", "proficiency": 95, "experience_years": "", "icon": "🐍", "is_primary": True},
+        {"name": "Java", "category": "Programming Languages", "proficiency": 85, "experience_years": "", "icon": "☕", "is_primary": True},
+        {"name": "JavaScript", "category": "Programming Languages", "proficiency": 85, "experience_years": "", "icon": "🟨", "is_primary": True},
 
         # Web Technologies
-        {"name": "HTML5 & CSS3", "category": "Web Technologies", "proficiency": 92, "experience_years": "2+ years", "icon": "🌐", "is_primary": True},
-        {"name": "JavaScript (DOM & Fetch)", "category": "Web Technologies", "proficiency": 88, "experience_years": "2+ years", "icon": "📜", "is_primary": True},
+        {"name": "HTML & CSS", "category": "Web Technologies", "proficiency": 92, "experience_years": "", "icon": "🌐", "is_primary": True},
+        {"name": "JavaScript (DOM & Fetch)", "category": "Web Technologies", "proficiency": 88, "experience_years": "", "icon": "📜", "is_primary": True},
 
-        # Backend & APIs
-        {"name": "FastAPI", "category": "Backend & APIs", "proficiency": 96, "experience_years": "2+ years", "icon": "⚡", "is_primary": True},
-        {"name": "REST APIs", "category": "Backend & APIs", "proficiency": 95, "experience_years": "2+ years", "icon": "📐", "is_primary": True},
-        {"name": "Pydantic V2", "category": "Backend & APIs", "proficiency": 92, "experience_years": "2+ years", "icon": "🛡️", "is_primary": True},
-        {"name": "AsyncIO & WebSockets", "category": "Backend & APIs", "proficiency": 90, "experience_years": "2+ years", "icon": "🔌", "is_primary": True},
-        {"name": "Uvicorn ASGI", "category": "Backend & APIs", "proficiency": 90, "experience_years": "2+ years", "icon": "🚀", "is_primary": True},
+        # Backend
+        {"name": "FastAPI", "category": "Backend", "proficiency": 96, "experience_years": "", "icon": "⚡", "is_primary": True},
+        {"name": "REST APIs", "category": "Backend", "proficiency": 95, "experience_years": "", "icon": "📐", "is_primary": True},
 
-        # Databases
-        {"name": "MySQL", "category": "Databases", "proficiency": 90, "experience_years": "2+ years", "icon": "🐬", "is_primary": True},
-        {"name": "SQLite & SQLAlchemy", "category": "Databases", "proficiency": 92, "experience_years": "2+ years", "icon": "🗄️", "is_primary": True},
+        # Database
+        {"name": "MySQL", "category": "Database", "proficiency": 90, "experience_years": "", "icon": "🐬", "is_primary": True},
 
-        # Machine Learning & Computer Vision
-        {"name": "TensorFlow & LSTM", "category": "Machine Learning & AI", "proficiency": 88, "experience_years": "1+ years", "icon": "🧠", "is_primary": True},
-        {"name": "OpenCV", "category": "Machine Learning & AI", "proficiency": 86, "experience_years": "1+ years", "icon": "👁️", "is_primary": True},
-        {"name": "Scikit-learn & Logistic Regression", "category": "Machine Learning & AI", "proficiency": 90, "experience_years": "2+ years", "icon": "📊", "is_primary": True},
+        # Machine Learning & AI
+        {"name": "TensorFlow", "category": "Machine Learning & AI", "proficiency": 88, "experience_years": "", "icon": "🧠", "is_primary": True},
+        {"name": "LSTM", "category": "Machine Learning & AI", "proficiency": 86, "experience_years": "", "icon": "🔄", "is_primary": True},
+        {"name": "OpenCV", "category": "Machine Learning & AI", "proficiency": 86, "experience_years": "", "icon": "👁️", "is_primary": True},
+        {"name": "Scikit-learn", "category": "Machine Learning & AI", "proficiency": 90, "experience_years": "", "icon": "📊", "is_primary": True},
+        {"name": "Logistic Regression", "category": "Machine Learning & AI", "proficiency": 88, "experience_years": "", "icon": "📈", "is_primary": True},
 
-        # Cloud & DevOps & Tools
-        {"name": "AWS (AWS Educate Certified)", "category": "Cloud & Tools", "proficiency": 88, "experience_years": "1+ years", "icon": "☁️", "is_primary": True},
-        {"name": "Git & GitHub", "category": "Cloud & Tools", "proficiency": 92, "experience_years": "2+ years", "icon": "🐙", "is_primary": True},
-        {"name": "Docker", "category": "Cloud & Tools", "proficiency": 86, "experience_years": "1+ years", "icon": "🐳", "is_primary": True},
-        {"name": "Pytest (Test Automation)", "category": "Cloud & Tools", "proficiency": 92, "experience_years": "1+ years", "icon": "🧪", "is_primary": True},
-        {"name": "Postman", "category": "Cloud & Tools", "proficiency": 90, "experience_years": "2+ years", "icon": "📮", "is_primary": True},
+        # Cloud & Tools
+        {"name": "AWS (AWS Educate)", "category": "Cloud & Tools", "proficiency": 88, "experience_years": "", "icon": "☁️", "is_primary": True},
+        {"name": "Git & GitHub", "category": "Cloud & Tools", "proficiency": 92, "experience_years": "", "icon": "🐙", "is_primary": True},
+        {"name": "Docker", "category": "Cloud & Tools", "proficiency": 86, "experience_years": "", "icon": "🐳", "is_primary": True},
     ]
 
     db.query(Skill).delete()

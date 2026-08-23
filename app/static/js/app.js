@@ -122,7 +122,6 @@ function renderSkills(selectedCat) {
       </div>
       <div class="skill-footer">
         <span>${s.category}</span>
-        <span>${s.experience_years}</span>
       </div>
     `;
     grid.appendChild(card);
