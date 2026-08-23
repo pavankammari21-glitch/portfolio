@@ -21,14 +21,14 @@ def test_list_categorized_skills(client):
     data = response.json()
     assert data['success'] is True
     categories = [cat['category'] for cat in data['data']]
-    assert 'Backend' in categories
+    assert any('Backend' in cat for cat in categories)
 
 def test_resume_json(client):
     response = client.get('/api/resume/json')
     assert response.status_code == 200
     data = response.json()
     assert 'basics' in data
-    assert data['basics']['name'] == 'Pavan'
+    assert 'Pavan' in data['basics']['name']
 
 def test_resume_download_html(client):
     response = client.get('/api/resume/download')

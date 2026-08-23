@@ -11,5 +11,5 @@ def test_overview_endpoint(client):
     assert response.status_code == 200
     data = response.json()
     assert data["success"] is True
-    assert data["data"]["developer"]["name"] == "Pavan"
+    assert "Pavan" in data["data"]["developer"]["name"]
     assert data["data"]["stats"]["total_projects"] > 0

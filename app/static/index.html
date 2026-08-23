@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pavan — Senior Backend & FastAPI Engineer | Portfolio & Live Platform</title>
-  <meta name="description" content="Official developer portfolio and live interactive API platform of Pavan. Built with FastAPI, Pydantic V2, AsyncIO, WebSockets, Docker, and Python 3.11.">
+  <title>Kammari Pavan — Python & FastAPI Backend Developer | ML & IT Engineer</title>
+  <meta name="description" content="Official developer portfolio and live interactive API platform of Kammari Pavan. B.Tech IT graduate (2022-2026) specializing in Python, FastAPI, REST APIs, MySQL, and Machine Learning systems.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1029,14 +1029,14 @@ textarea.form-control { min-height: 110px; resize: vertical; }
     <div class="container nav-container">
       <a href="#" class="nav-logo">
         <span class="logo-badge">FASTAPI 2.0</span>
-        <span>PAVAN.DEV</span>
+        <span>KAMMARI PAVAN</span>
       </a>
 
       <ul class="nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills Matrix</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#timeline" class="nav-link">Experience</a></li>
+        <li><a href="#timeline" class="nav-link">Education & Certs</a></li>
         <li><a href="#sandbox" class="nav-link">API Sandbox</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
@@ -1063,32 +1063,33 @@ textarea.form-control { min-height: 110px; resize: vertical; }
         <div class="hero-info">
           <div class="hero-status-tag">
             <span class="pulse-dot"></span>
-            <span>AVAILABLE FOR SENIOR BACKEND & DISTRIBUTED SYSTEMS ROLES</span>
+            <span>AVAILABLE FOR SOFTWARE & BACKEND ENGINEERING ROLES</span>
           </div>
           
           <h1 class="hero-title">
-            Hi, I'm <span class="gradient-text">Pavan</span>.<br>
-            Engineering Resilient APIs & Distributed Systems.
+            Hi, I'm <span class="gradient-text">Kammari Pavan</span>.<br>
+            Python & FastAPI Backend Developer.
           </h1>
           
           <p class="hero-subtitle">
-            Specializing in high-concurrency <strong>FastAPI microservices</strong>, asynchronous event-driven pipelines, 
-            vector RAG retrieval systems, and scalable cloud deployments.
+            B.Tech in Information Technology graduate (2022 – 2026) from Vignan Institute of Technology and Science. 
+            Specializing in high-performance <strong>FastAPI REST APIs</strong>, MySQL/SQLite database architectures, 
+            and <strong>Machine Learning & Computer Vision</strong> applications (TensorFlow, LSTM, OpenCV).
           </p>
 
           <div class="hero-badges">
-            <div class="hero-badge-pill"><span>⚡</span> FastAPI 0.111</div>
-            <div class="hero-badge-pill"><span>🐍</span> Python 3.11+</div>
-            <div class="hero-badge-pill"><span>🐘</span> PostgreSQL</div>
-            <div class="hero-badge-pill"><span>🔥</span> Redis</div>
-            <div class="hero-badge-pill"><span>🐳</span> Docker</div>
-            <div class="hero-badge-pill"><span>🧠</span> LangChain</div>
+            <div class="hero-badge-pill"><span>🐍</span> Python & Java</div>
+            <div class="hero-badge-pill"><span>⚡</span> FastAPI & REST APIs</div>
+            <div class="hero-badge-pill"><span>🐬</span> MySQL & SQLite</div>
+            <div class="hero-badge-pill"><span>🧠</span> TensorFlow & LSTM</div>
+            <div class="hero-badge-pill"><span>👁️</span> OpenCV Computer Vision</div>
+            <div class="hero-badge-pill"><span>☁️</span> AWS Educate Certified</div>
             <div class="hero-badge-pill"><span>🧪</span> Pytest (43/43 Passed)</div>
           </div>
           
           <div class="hero-cta">
             <a href="#projects" class="btn btn-primary">
-              <span>🚀 Explore Flagship Projects</span>
+              <span>🚀 Explore Projects</span>
             </a>
             <a href="#sandbox" class="btn btn-outline">
               <span>🧪 Live API Sandbox</span>
@@ -1107,18 +1108,18 @@ textarea.form-control { min-height: 110px; resize: vertical; }
                 <span class="dot dot-yellow"></span>
                 <span class="dot dot-green"></span>
               </div>
-              <span class="terminal-title">fastapi_server.py &bull; Uvicorn Async Worker</span>
-              <span id="ws-latency" style="color:var(--accent-emerald);font-size:0.75rem;font-family:var(--font-code);font-weight:600;">ping: 8ms</span>
+              <span class="terminal-title">pavan_fastapi_server.py &bull; Uvicorn Async Engine</span>
+              <span id="ws-latency" style="color:var(--accent-emerald);font-size:0.75rem;font-family:var(--font-code);font-weight:600;">ping: 6ms</span>
             </div>
             <div class="terminal-body">
-              <span class="code-comment"># Live FastAPI Lifespan & Dependency Injection</span><br>
+              <span class="code-comment"># Kammari Pavan &bull; B.Tech IT (2022-2026)</span><br>
               <span class="code-keyword">from</span> fastapi <span class="code-keyword">import</span> FastAPI, Depends, BackgroundTasks<br>
-              <span class="code-keyword">from</span> pydantic <span class="code-keyword">import</span> BaseModel, Field<br><br>
-              app = <span class="code-func">FastAPI</span>(title=<span class="code-str">"Pavan's Portfolio API"</span>)<br><br>
-              <span class="code-keyword">@app.get</span>(<span class="code-str">"/api/skills"</span>)<br>
-              <span class="code-keyword">async def</span> <span class="code-func">get_stack</span>(db = <span class="code-func">Depends</span>(get_db)):<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> db.query(Skill).all()<br><br>
-              <span class="code-comment"># Sub-10ms P99 latency &bull; Zero downtime</span>
+              <span class="code-keyword">from</span> app.database <span class="code-keyword">import</span> get_db<br><br>
+              app = <span class="code-func">FastAPI</span>(title=<span class="code-str">"Kammari Pavan's Portfolio API"</span>)<br><br>
+              <span class="code-keyword">@app.get</span>(<span class="code-str">"/api/projects"</span>)<br>
+              <span class="code-keyword">async def</span> <span class="code-func">get_projects</span>(db = <span class="code-func">Depends</span>(get_db)):<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> db.query(Project).all()<br><br>
+              <span class="code-comment"># Sign Language System &bull; Breast Cancer ML &bull; FastAPI Platform</span>
             </div>
           </div>
         </div>
@@ -1131,20 +1132,20 @@ textarea.form-control { min-height: 110px; resize: vertical; }
     <div class="container">
       <div class="stats-grid">
         <div class="stat-card glass-panel">
-          <div class="stat-value" id="stat-projects-count">5+</div>
-          <div class="stat-label">Production Architectures</div>
+          <div class="stat-value" id="stat-projects-count">3</div>
+          <div class="stat-label">Flagship Projects</div>
         </div>
         <div class="stat-card glass-panel">
-          <div class="stat-value" id="stat-skills-count">20+</div>
+          <div class="stat-value" id="stat-skills-count">18</div>
           <div class="stat-label">Core Technologies</div>
         </div>
         <div class="stat-card glass-panel">
-          <div class="stat-value" id="stat-exp-count">4+</div>
-          <div class="stat-label">Years Experience</div>
+          <div class="stat-value" id="stat-exp-count">2022 - 2026</div>
+          <div class="stat-label">B.Tech IT (Vignan)</div>
         </div>
         <div class="stat-card glass-panel">
-          <div class="stat-value" id="stat-apis-count">25+</div>
-          <div class="stat-label">Microservices Engineered</div>
+          <div class="stat-value" id="stat-apis-count">19+</div>
+          <div class="stat-label">Live FastAPI Endpoints</div>
         </div>
       </div>
     </div>
@@ -1154,10 +1155,10 @@ textarea.form-control { min-height: 110px; resize: vertical; }
   <section class="section" id="about">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Engineering Philosophy</div>
-        <h2 class="section-title">High Throughput. Type-Safe. Cloud-Native.</h2>
+        <div class="section-tag">Career Objective</div>
+        <h2 class="section-title">Motivated Graduate & Fast Learner</h2>
         <p class="section-desc">
-          I architect backend platforms that scale gracefully under heavy load, maintain strict contract safety with Pydantic schemas, and run seamlessly across containerized cloud environments.
+          Motivated and enthusiastic graduate seeking an opportunity to launch a professional career in a challenging and growth-oriented organization. Eager to apply technical knowledge in Python, FastAPI, REST APIs, MySQL, and Machine Learning to develop innovative solutions while contributing effectively to team and organizational success.
         </p>
       </div>
     </div>
@@ -1167,9 +1168,9 @@ textarea.form-control { min-height: 110px; resize: vertical; }
   <section class="section" id="skills" style="padding-top:0;">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Technical Matrix</div>
-        <h2 class="section-title">Proficiencies & Tooling</h2>
-        <p class="section-desc">Dynamically queried from the live FastAPI <code>/api/skills/categorized</code> endpoint.</p>
+        <div class="section-tag">Technical Skills</div>
+        <h2 class="section-title">Proficiencies & Technologies</h2>
+        <p class="section-desc">Dynamically loaded from the live FastAPI <code>/api/skills/categorized</code> endpoint.</p>
       </div>
 
       <div class="skills-tabs" id="skills-tabs"></div>
@@ -1181,9 +1182,9 @@ textarea.form-control { min-height: 110px; resize: vertical; }
   <section class="section" id="projects">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Flagship Work</div>
-        <h2 class="section-title">Engineered Solutions & APIs</h2>
-        <p class="section-desc">Explore projects with live filtering, architecture diagrams, and source repositories.</p>
+        <div class="section-tag">Projects</div>
+        <h2 class="section-title">Machine Learning & Backend Systems</h2>
+        <p class="section-desc">Explore projects with live filtering, architecture modals, accuracy metrics, and source repositories.</p>
       </div>
 
       <div class="project-filters" id="project-filters"></div>
@@ -1191,13 +1192,13 @@ textarea.form-control { min-height: 110px; resize: vertical; }
     </div>
   </section>
 
-  <!-- Experience & Career Timeline -->
+  <!-- Education & Certifications Timeline -->
   <section class="section" id="timeline">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Career Path</div>
-        <h2 class="section-title">Experience & Milestones</h2>
-        <p class="section-desc">Professional journey in backend software engineering, cloud architecture, and data pipelines.</p>
+        <div class="section-tag">Academic Background</div>
+        <h2 class="section-title">Education & Certifications</h2>
+        <p class="section-desc">Educational qualifications, certifications, and leadership activities.</p>
       </div>
 
       <div class="timeline" id="experience-timeline"></div>
@@ -1240,20 +1241,28 @@ textarea.form-control { min-height: 110px; resize: vertical; }
     <div class="container">
       <div class="section-header">
         <div class="section-tag">Get In Touch</div>
-        <h2 class="section-title">Let's Build Something Resilient</h2>
-        <p class="section-desc">Submitting this form triggers a FastAPI <code>BackgroundTasks</code> worker to dispatch email notifications asynchronously.</p>
+        <h2 class="section-title">Connect with Kammari Pavan</h2>
+        <p class="section-desc">Submitting this form triggers a FastAPI <code>BackgroundTasks</code> worker to dispatch notifications asynchronously.</p>
       </div>
 
       <div class="contact-grid">
         <div class="contact-info-card glass-panel">
-          <h3>Contact Details</h3>
-          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;">Looking for a high-performing backend engineer or full-stack consultant? Feel free to reach out directly.</p>
+          <h3>Contact Information</h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;">Feel free to reach out directly via email, phone, or LinkedIn for opportunities and collaborations.</p>
 
           <div class="contact-item">
             <div class="contact-icon">📍</div>
             <div>
               <div style="font-weight:600;">Location</div>
-              <div style="color:var(--text-dim);font-size:0.88rem;">Hyderabad, India (Open to Remote Globally)</div>
+              <div style="color:var(--text-dim);font-size:0.88rem;">Telangana, India (Open to Relocation & Remote)</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div style="font-weight:600;">Phone</div>
+              <a href="tel:7702189098" style="color:var(--accent-cyan);font-size:0.88rem;text-decoration:none;">+91 7702189098</a>
             </div>
           </div>
 
@@ -1261,7 +1270,15 @@ textarea.form-control { min-height: 110px; resize: vertical; }
             <div class="contact-icon">✉️</div>
             <div>
               <div style="font-weight:600;">Email</div>
-              <div style="color:var(--accent-cyan);font-size:0.88rem;cursor:pointer;" onclick="navigator.clipboard.writeText('pavan.dev.engineer@gmail.com'); showToast('Email copied to clipboard!');">pavan.dev.engineer@gmail.com (Click to Copy)</div>
+              <div style="color:var(--accent-cyan);font-size:0.88rem;cursor:pointer;" onclick="navigator.clipboard.writeText('pavankammari6@gmail.com'); showToast('Email copied to clipboard!');">pavankammari6@gmail.com (Click to Copy)</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">💼</div>
+            <div>
+              <div style="font-weight:600;">LinkedIn</div>
+              <a href="https://www.linkedin.com/in/pavan-kammari-352b18254/" target="_blank" style="color:var(--accent-cyan);font-size:0.88rem;text-decoration:none;">linkedin.com/in/pavan-kammari-352b18254</a>
             </div>
           </div>
 
@@ -1269,7 +1286,7 @@ textarea.form-control { min-height: 110px; resize: vertical; }
             <div class="contact-icon">🐙</div>
             <div>
               <div style="font-weight:600;">GitHub</div>
-              <a href="https://github.com/pavankammari21-glitch" target="_blank" style="color:var(--text-dim);font-size:0.88rem;text-decoration:none;">github.com/pavankammari21-glitch</a>
+              <a href="https://github.com/pavankammari6-wq" target="_blank" style="color:var(--accent-cyan);font-size:0.88rem;text-decoration:none;">github.com/pavankammari6-wq</a>
             </div>
           </div>
         </div>
@@ -1278,22 +1295,22 @@ textarea.form-control { min-height: 110px; resize: vertical; }
           <form id="contact-form">
             <div class="form-group">
               <label class="form-label" for="contact-name">Your Name *</label>
-              <input type="text" class="form-control" id="contact-name" placeholder="Alex Morgan" required>
+              <input type="text" class="form-control" id="contact-name" placeholder="Recruiter / Collaborator Name" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="contact-email">Email Address *</label>
-              <input type="email" class="form-control" id="contact-email" placeholder="alex@company.com" required>
+              <input type="email" class="form-control" id="contact-email" placeholder="recruiter@company.com" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="contact-subject">Subject</label>
-              <input type="text" class="form-control" id="contact-subject" placeholder="FastAPI Project / Role Discussion" value="FastAPI Project Collaboration">
+              <input type="text" class="form-control" id="contact-subject" placeholder="Opportunity / Project Discussion" value="Job Opportunity / Collaboration">
             </div>
 
             <div class="form-group">
               <label class="form-label" for="contact-message">Your Message *</label>
-              <textarea class="form-control" id="contact-message" placeholder="Hi Pavan, we are looking for a FastAPI specialist..." required></textarea>
+              <textarea class="form-control" id="contact-message" placeholder="Hi Pavan, we came across your portfolio and would like to discuss an opportunity..." required></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary" id="contact-submit-btn" style="width:100%;">
@@ -1309,10 +1326,10 @@ textarea.form-control { min-height: 110px; resize: vertical; }
   <footer class="footer">
     <div class="container">
       <p style="margin-bottom:8px;">
-        Designed & Engineered with ❤️ by <strong>Pavan</strong> using <strong>FastAPI 0.111.0</strong>, <strong>Python 3.11</strong>, <strong>Pydantic V2</strong>, and <strong>WebSockets</strong>.
+        Designed & Engineered with ❤️ by <strong>Kammari Pavan</strong> using <strong>FastAPI 0.111</strong>, <strong>Python 3.11</strong>, <strong>Pydantic V2</strong>, and <strong>WebSockets</strong>.
       </p>
       <p style="color:var(--text-dim);font-size:0.8rem;">
-        &copy; 2026 Pavan. All Rights Reserved. Fully containerized with Docker & Cloud-Ready.
+        &copy; 2026 Kammari Pavan. All Rights Reserved. Fully verified against official resume.
       </p>
     </div>
   </footer>
@@ -1329,7 +1346,7 @@ textarea.form-control { min-height: 110px; resize: vertical; }
         <p id="arch-modal-desc" style="color:var(--text-main);font-size:0.95rem;"></p>
       </div>
       <div style="margin-bottom:16px;">
-        <h4 style="color:var(--accent-cyan);font-size:0.85rem;text-transform:uppercase;margin-bottom:6px;">Architecture & Design Patterns</h4>
+        <h4 style="color:var(--accent-cyan);font-size:0.85rem;text-transform:uppercase;margin-bottom:6px;">Architecture & Key Highlights</h4>
         <p id="arch-modal-notes" style="color:var(--text-muted);font-size:0.9rem;"></p>
       </div>
       <div>
@@ -1361,25 +1378,29 @@ textarea.form-control { min-height: 110px; resize: vertical; }
             <input type="password" class="form-control" id="admin-pass" value="fastapi_mastery_2026" required>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;">
-            <span>🔑 Login with OAuth2 / JWT</span>
+            <span>🔐 Log In (OAuth2 Password Grant)</span>
           </button>
         </form>
       </div>
 
       <div id="admin-dashboard-view" style="display:none;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-          <h4 style="color:var(--accent-cyan);">📨 Inquiries Inbox</h4>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <div>
+            <h4 style="margin:0;">Recent Contact Inquiries</h4>
+            <span style="font-size:0.8rem; color:var(--text-dim);">Real-time SQLite database records</span>
+          </div>
           <button class="btn btn-outline btn-sm" id="admin-logout-btn">Logout</button>
         </div>
-        <div id="admin-inbox-list"></div>
+
+        <div id="admin-messages-list" style="display:flex; flex-direction:column; gap:12px; max-height:400px; overflow-y:auto;"></div>
       </div>
     </div>
   </div>
 
-  <!-- Toast Notification Container -->
+  <!-- Toast Container -->
   <div class="toast-container" id="toast-container"></div>
 
-  <!-- Scripts -->
+  <!-- Client-Side JavaScript Application Logic -->
   <script>
 // Real-time WebSocket Telemetry Handler
 class WebSocketClient {
@@ -1484,8 +1505,7 @@ window.addEventListener("DOMContentLoaded", () => {
   window.wsClient.connect();
 });
 
-  </script>
-  <script>
+
 // Interactive FastAPI Sandbox Tester
 const ENDPOINTS = [
   {
@@ -1615,8 +1635,7 @@ function initSandbox() {
 
 window.addEventListener("DOMContentLoaded", initSandbox);
 
-  </script>
-  <script>
+
 // Main Application Logic
 document.addEventListener("DOMContentLoaded", () => {
   fetchOverview();

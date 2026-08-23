@@ -18,7 +18,7 @@ def test_filter_projects_by_tech(client):
         assert any('fastapi' in t.lower() for t in item['tech_stack'])
 
 def test_search_projects(client):
-    response = client.get('/api/projects?search=microservices')
+    response = client.get('/api/projects?search=portfolio')
     assert response.status_code == 200
     data = response.json()
     assert data['success'] is True

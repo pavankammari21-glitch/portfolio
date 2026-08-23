@@ -30,12 +30,13 @@ class Settings(BaseModel):
     )
     ALLOWED_ORIGINS: list[str] = ["*"]
     
-    # Portfolio owner info
-    OWNER_NAME: str = "Pavan"
-    OWNER_ROLE: str = "Senior Full-Stack & Python / FastAPI Specialist"
-    OWNER_TAGLINE: str = "Architecting resilient APIs, distributed backend systems, and modern AI-driven cloud web applications."
-    OWNER_LOCATION: str = "Hyderabad, India / Remote"
-    OWNER_GITHUB: str = "https://github.com"
-    OWNER_LINKEDIN: str = "https://linkedin.com"
+    # Portfolio owner info (from verified resume)
+    OWNER_NAME: str = "Kammari Pavan"
+    OWNER_ROLE: str = "Python & FastAPI Backend Developer | ML & IT Engineer"
+    OWNER_TAGLINE: str = "B.Tech IT graduate specializing in Python, FastAPI, REST APIs, MySQL, and Machine Learning systems."
+    OWNER_LOCATION: str = "Telangana, India"
+    OWNER_PHONE: str = "7702189098"
+    OWNER_GITHUB: str = "https://github.com/pavankammari6-wq"
+    OWNER_LINKEDIN: str = "https://www.linkedin.com/in/pavan-kammari-352b18254/"
 
 settings = Settings()

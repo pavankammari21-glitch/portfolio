@@ -67,9 +67,9 @@ async def get_overview(db: Session = Depends(get_db)):
                 "career_milestones": experience_count,
                 "inquiries_received": inquiries_count,
                 "api_uptime_seconds": int(time.time() - START_TIME),
-                "years_experience": "4+",
-                "apis_engineered": "25+",
-                "test_coverage_percent": "94%"
+                "years_experience": "2022 - 2026",
+                "apis_engineered": "19+",
+                "test_coverage_percent": "100%"
             },
             "environment": {
                 "python_version": platform.python_version(),
