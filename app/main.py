@@ -93,8 +93,17 @@ async def add_process_time_and_log_header(request: Request, call_next):
 # C. Vercel Serverless Path Normalizer Middleware
 @app.middleware("http")
 async def normalize_vercel_path(request: Request, call_next):
+    import urllib.parse
     raw_path = request.scope.get("path", "")
-    if raw_path.startswith("/api/index.py") or raw_path.startswith("/api/index"):
+    query_string = request.scope.get("query_string", b"").decode("utf-8")
+    
+    parsed_qs = urllib.parse.parse_qs(query_string, keep_blank_values=True)
+    if "__route__" in parsed_qs:
+        route_val = parsed_qs.pop("__route__")[0]
+        request.scope["query_string"] = urllib.parse.urlencode(parsed_qs, doseq=True).encode("utf-8")
+        target_path = "/" + route_val.lstrip("/") if route_val else "/"
+        request.scope["path"] = target_path
+    elif raw_path.startswith("/api/index.py") or raw_path.startswith("/api/index"):
         matched = (
             request.headers.get("x-vercel-matched-path")
             or request.headers.get("x-matched-path")
@@ -106,6 +115,7 @@ async def normalize_vercel_path(request: Request, call_next):
         else:
             suffix = raw_path.replace("/api/index.py", "").replace("/api/index", "")
             request.scope["path"] = suffix if suffix else "/"
+            
     return await call_next(request)
 
 # --- 4. Register Custom Exception Handlers ---
