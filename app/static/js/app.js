@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchProjects();
   fetchExperience();
   setupContactForm();
-  setupAdminModal();
 });
 
 // Toast notification helper
@@ -311,105 +310,4 @@ function setupContactForm() {
       submitBtn.innerHTML = "🚀 Send Message (Async Background Task)";
     }
   });
-}
-
-// 7. Setup Admin Modal & Management
-let adminToken = localStorage.getItem("fastapi_portfolio_jwt");
-
-function setupAdminModal() {
-  const openBtn = document.getElementById("open-admin-btn");
-  const modal = document.getElementById("admin-modal");
-  const closeBtn = document.getElementById("close-admin-btn");
-  const loginForm = document.getElementById("admin-login-form");
-  const dashboardView = document.getElementById("admin-dashboard-view");
-  const loginView = document.getElementById("admin-login-view");
-
-  if (!modal) return;
-
-  openBtn.addEventListener("click", () => {
-    modal.classList.add("active");
-    if (adminToken) {
-      showAdminDashboard();
-    } else {
-      loginView.style.display = "block";
-      dashboardView.style.display = "none";
-    }
-  });
-
-  closeBtn.addEventListener("click", () => {
-    modal.classList.remove("active");
-  });
-
-  loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const u = document.getElementById("admin-user").value;
-    const p = document.getElementById("admin-pass").value;
-
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: u, password: p })
-      });
-      const data = await res.json();
-      if (res.ok && data.access_token) {
-        adminToken = data.access_token;
-        localStorage.setItem("fastapi_portfolio_jwt", adminToken);
-        showToast("Authenticated as Admin!", "success");
-        showAdminDashboard();
-      } else {
-        showToast("Invalid admin credentials", "error");
-      }
-    } catch (err) {
-      showToast(err.message, "error");
-    }
-  });
-
-  async function showAdminDashboard() {
-    loginView.style.display = "none";
-    dashboardView.style.display = "block";
-    loadAdminInbox();
-  }
-
-  async function loadAdminInbox() {
-    const listEl = document.getElementById("admin-inbox-list");
-    if (!listEl) return;
-    listEl.innerHTML = "<p>Loading messages...</p>";
-
-    try {
-      const res = await fetch("/api/contact/inbox", {
-        headers: { "Authorization": `Bearer ${adminToken}` }
-      });
-      const data = await res.json();
-      if (data.success && data.data) {
-        if (data.data.length === 0) {
-          listEl.innerHTML = "<p style='color:var(--text-dim);'>No messages received yet.</p>";
-          return;
-        }
-        listEl.innerHTML = data.data.map(m => `
-          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);padding:14px;border-radius:8px;margin-bottom:10px;">
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-              <strong>${m.name} &lt;${m.email}&gt;</strong>
-              <span style="font-size:0.8rem;color:var(--text-dim);">${new Date(m.created_at).toLocaleDateString()}</span>
-            </div>
-            <div style="color:var(--accent-cyan);font-size:0.85rem;margin-bottom:6px;">Subject: ${m.subject}</div>
-            <p style="font-size:0.9rem;color:var(--text-muted);">${m.message}</p>
-          </div>
-        `).join("");
-      }
-    } catch (err) {
-      listEl.innerHTML = `<p style='color:#ef4444;'>Failed to load inbox: ${err.message}</p>`;
-    }
-  }
-
-  const logoutBtn = document.getElementById("admin-logout-btn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      adminToken = null;
-      localStorage.removeItem("fastapi_portfolio_jwt");
-      loginView.style.display = "block";
-      dashboardView.style.display = "none";
-      showToast("Logged out successfully");
-    });
-  }
 }

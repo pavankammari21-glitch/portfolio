@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kammari Pavan — Python & FastAPI Backend Developer | ML & IT Engineer</title>
-  <meta name="description" content="Official developer portfolio and live interactive API platform of Kammari Pavan. B.Tech IT graduate (2022-2026) specializing in Python, FastAPI, REST APIs, MySQL, and Machine Learning systems.">
+  <meta name="description" content="Official developer portfolio of Kammari Pavan. B.Tech IT graduate (2022-2026) specializing in Python, FastAPI, REST APIs, MySQL, and Machine Learning systems.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1028,7 +1028,7 @@ textarea.form-control { min-height: 110px; resize: vertical; }
   <nav class="navbar">
     <div class="container nav-container">
       <a href="#" class="nav-logo">
-        <span class="logo-badge">FASTAPI 2.0</span>
+        <span class="logo-badge">PORTFOLIO</span>
         <span>KAMMARI PAVAN</span>
       </a>
 
@@ -1037,21 +1037,16 @@ textarea.form-control { min-height: 110px; resize: vertical; }
         <li><a href="#skills" class="nav-link">Skills Matrix</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#timeline" class="nav-link">Education & Certs</a></li>
-        <li><a href="#sandbox" class="nav-link">API Sandbox</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
 
       <div class="nav-actions">
-        <div class="live-status-pill" id="server-status-pill">
-          <span class="pulse-dot"></span>
-          <span>FASTAPI LIVE</span>
-        </div>
-        <a href="/docs" target="_blank" class="btn btn-outline btn-sm">
-          <span>📖 Swagger /docs</span>
+        <a href="/api/resume/download" target="_blank" class="btn btn-outline btn-sm">
+          <span>📄 Resume (PDF)</span>
         </a>
-        <button class="btn btn-outline btn-sm" id="open-admin-btn">
-          <span>🔒 Admin</span>
-        </button>
+        <a href="#contact" class="btn btn-primary btn-sm">
+          <span>✉️ Get in Touch</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -1091,11 +1086,11 @@ textarea.form-control { min-height: 110px; resize: vertical; }
             <a href="#projects" class="btn btn-primary">
               <span>🚀 Explore Projects</span>
             </a>
-            <a href="#sandbox" class="btn btn-outline">
-              <span>🧪 Live API Sandbox</span>
-            </a>
             <a href="/api/resume/download" target="_blank" class="btn btn-outline">
               <span>📄 Download Resume (PDF)</span>
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <span>✉️ Contact Me</span>
             </a>
           </div>
         </div>
@@ -1109,7 +1104,6 @@ textarea.form-control { min-height: 110px; resize: vertical; }
                 <span class="dot dot-green"></span>
               </div>
               <span class="terminal-title">pavan_fastapi_server.py &bull; Uvicorn Async Engine</span>
-              <span id="ws-latency" style="color:var(--accent-emerald);font-size:0.75rem;font-family:var(--font-code);font-weight:600;">ping: 6ms</span>
             </div>
             <div class="terminal-body">
               <span class="code-comment"># Kammari Pavan &bull; B.Tech IT (2022-2026)</span><br>
@@ -1184,7 +1178,7 @@ textarea.form-control { min-height: 110px; resize: vertical; }
       <div class="section-header">
         <div class="section-tag">Projects</div>
         <h2 class="section-title">Machine Learning & Backend Systems</h2>
-        <p class="section-desc">Explore projects with live filtering, architecture modals, accuracy metrics, and source repositories.</p>
+        <p class="section-desc">Explore projects with live category filtering, architecture modals, accuracy metrics, and source repositories.</p>
       </div>
 
       <div class="project-filters" id="project-filters"></div>
@@ -1202,37 +1196,6 @@ textarea.form-control { min-height: 110px; resize: vertical; }
       </div>
 
       <div class="timeline" id="experience-timeline"></div>
-    </div>
-  </section>
-
-  <!-- Live FastAPI Interactive Sandbox -->
-  <section class="section" id="sandbox">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">Developer Playground</div>
-        <h2 class="section-title">Live Interactive FastAPI Sandbox</h2>
-        <p class="section-desc">
-          Test live FastAPI endpoints directly in your browser. Inspect status codes, response payloads, and the <code>X-Process-Time-Sec</code> header calculated by our custom middleware.
-        </p>
-      </div>
-
-      <div class="sandbox-card glass-panel">
-        <div class="sandbox-controls">
-          <select class="sandbox-select" id="sandbox-endpoint-select"></select>
-          <input type="text" class="sandbox-input" id="sandbox-url-input" readonly>
-          <button class="btn btn-primary" id="sandbox-execute-btn">▶ Send Request</button>
-        </div>
-
-        <textarea id="sandbox-body-input" class="form-control" style="margin-bottom:15px;display:none;font-family:var(--font-code);font-size:0.85rem;"></textarea>
-
-        <div class="sandbox-response-container">
-          <div class="sandbox-response-header">
-            <span id="sandbox-res-status">Status: Ready to execute</span>
-            <span id="sandbox-res-time" style="color:var(--accent-cyan);">Server Process Time: --</span>
-          </div>
-          <pre class="sandbox-response-body" id="sandbox-res-body">// Click "Send Request" to test live FastAPI endpoint...</pre>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1326,7 +1289,7 @@ textarea.form-control { min-height: 110px; resize: vertical; }
   <footer class="footer">
     <div class="container">
       <p style="margin-bottom:8px;">
-        Designed & Engineered with ❤️ by <strong>Kammari Pavan</strong> using <strong>FastAPI 0.111</strong>, <strong>Python 3.11</strong>, <strong>Pydantic V2</strong>, and <strong>WebSockets</strong>.
+        Designed & Engineered with ❤️ by <strong>Kammari Pavan</strong> using <strong>FastAPI 0.111</strong>, <strong>Python 3.11</strong>, <strong>Pydantic V2</strong>, and <strong>MySQL/SQLite</strong>.
       </p>
       <p style="color:var(--text-dim);font-size:0.8rem;">
         &copy; 2026 Kammari Pavan. All Rights Reserved. Fully verified against official resume.
@@ -1356,286 +1319,11 @@ textarea.form-control { min-height: 110px; resize: vertical; }
     </div>
   </div>
 
-  <!-- Admin Dashboard / Login Modal -->
-  <div class="modal-overlay" id="admin-modal">
-    <div class="modal-container glass-panel">
-      <div class="modal-header">
-        <h3>🔒 Developer & Admin Console</h3>
-        <button class="modal-close" id="close-admin-btn">&times;</button>
-      </div>
-
-      <div id="admin-login-view">
-        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">
-          Authenticate with OAuth2 / JWT to view received contact messages and manage portfolio items.
-        </p>
-        <form id="admin-login-form">
-          <div class="form-group">
-            <label class="form-label">Username</label>
-            <input type="text" class="form-control" id="admin-user" value="pavan_admin" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" id="admin-pass" value="fastapi_mastery_2026" required>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;">
-            <span>🔐 Log In (OAuth2 Password Grant)</span>
-          </button>
-        </form>
-      </div>
-
-      <div id="admin-dashboard-view" style="display:none;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-          <div>
-            <h4 style="margin:0;">Recent Contact Inquiries</h4>
-            <span style="font-size:0.8rem; color:var(--text-dim);">Real-time SQLite database records</span>
-          </div>
-          <button class="btn btn-outline btn-sm" id="admin-logout-btn">Logout</button>
-        </div>
-
-        <div id="admin-messages-list" style="display:flex; flex-direction:column; gap:12px; max-height:400px; overflow-y:auto;"></div>
-      </div>
-    </div>
-  </div>
-
   <!-- Toast Container -->
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Client-Side JavaScript Application Logic -->
   <script>
-// Real-time WebSocket Telemetry Handler
-class WebSocketClient {
-  constructor() {
-    this.ws = null;
-    this.pingInterval = null;
-    this.reconnectAttempts = 0;
-    this.maxReconnectAttempts = 10;
-  }
-
-  connect() {
-    const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    const wsUrl = `${protocol}//${window.location.host}/ws/live-stats`;
-
-    console.log("🔌 Connecting to FastAPI WebSocket:", wsUrl);
-    this.ws = new WebSocket(wsUrl);
-
-    this.ws.onopen = () => {
-      console.log("⚡ WebSocket Connected to FastAPI live telemetry!");
-      this.reconnectAttempts = 0;
-      this.updateStatusPill(true);
-      this.startPing();
-    };
-
-    this.ws.onmessage = (event) => {
-      try {
-        const data = JSON.parse(event.data);
-        this.handleMessage(data);
-      } catch (err) {
-        console.warn("WebSocket non-JSON payload:", event.data);
-      }
-    };
-
-    this.ws.onclose = () => {
-      console.log("🔌 WebSocket Disconnected.");
-      this.updateStatusPill(false);
-      this.stopPing();
-      this.attemptReconnect();
-    };
-
-    this.ws.onerror = (err) => {
-      console.error("WebSocket Error:", err);
-    };
-  }
-
-  handleMessage(data) {
-    if (data.type === "visitor_count" || data.type === "handshake") {
-      const visitorsEl = document.getElementById("active-visitors-count");
-      if (visitorsEl && data.active_visitors !== undefined) {
-        visitorsEl.textContent = data.active_visitors;
-      }
-    }
-
-    if (data.type === "pong") {
-      const latencyEl = document.getElementById("ws-latency");
-      if (latencyEl && this.lastPingTime) {
-        const rtt = Math.round(performance.now() - this.lastPingTime);
-        latencyEl.textContent = `${rtt}ms`;
-      }
-    }
-  }
-
-  startPing() {
-    this.stopPing();
-    this.pingInterval = setInterval(() => {
-      if (this.ws && this.ws.readyState === WebSocket.OPEN) {
-        this.lastPingTime = performance.now();
-        this.ws.send(JSON.stringify({ command: "ping" }));
-      }
-    }, 5000);
-  }
-
-  stopPing() {
-    if (this.pingInterval) {
-      clearInterval(this.pingInterval);
-      this.pingInterval = null;
-    }
-  }
-
-  attemptReconnect() {
-    if (this.reconnectAttempts < this.maxReconnectAttempts) {
-      this.reconnectAttempts++;
-      const delay = Math.min(1000 * Math.pow(2, this.reconnectAttempts), 10000);
-      setTimeout(() => this.connect(), delay);
-    }
-  }
-
-  updateStatusPill(online) {
-    const pill = document.getElementById("server-status-pill");
-    if (pill) {
-      if (online) {
-        pill.innerHTML = `<span class="pulse-dot"></span> <span>API ONLINE</span> <span style="opacity:0.6;margin-left:4px;">(<span id="active-visitors-count">1</span> active)</span>`;
-      } else {
-        pill.innerHTML = `<span class="pulse-dot" style="background:#ef4444;box-shadow:0 0 10px #ef4444;"></span> <span>RECONNECTING...</span>`;
-      }
-    }
-  }
-}
-
-window.wsClient = new WebSocketClient();
-window.addEventListener("DOMContentLoaded", () => {
-  window.wsClient.connect();
-});
-
-
-// Interactive FastAPI Sandbox Tester
-const ENDPOINTS = [
-  {
-    name: "GET /api/analytics/overview (Platform Stats)",
-    method: "GET",
-    url: "/api/analytics/overview",
-    body: null
-  },
-  {
-    name: "GET /api/projects?featured_only=true (Featured Projects)",
-    method: "GET",
-    url: "/api/projects?featured_only=true",
-    body: null
-  },
-  {
-    name: "GET /api/skills/categorized (Grouped Tech Matrix)",
-    method: "GET",
-    url: "/api/skills/categorized",
-    body: null
-  },
-  {
-    name: "GET /api/experience (Career Timeline)",
-    method: "GET",
-    url: "/api/experience",
-    body: null
-  },
-  {
-    name: "GET /api/analytics/health (Uptime Probe)",
-    method: "GET",
-    url: "/api/analytics/health",
-    body: null
-  },
-  {
-    name: "GET /api/resume/json (Standard JSON Resume)",
-    method: "GET",
-    url: "/api/resume/json",
-    body: null
-  },
-  {
-    name: "POST /api/contact (Async BackgroundTask)",
-    method: "POST",
-    url: "/api/contact",
-    body: JSON.stringify({
-      name: "FastAPI Explorer",
-      email: "recruiter@techventures.com",
-      subject: "Interactive API Test",
-      message: "Testing FastAPI BackgroundTasks and Pydantic validation live from sandbox!"
-    }, null, 2)
-  }
-];
-
-function initSandbox() {
-  const selectEl = document.getElementById("sandbox-endpoint-select");
-  const inputEl = document.getElementById("sandbox-url-input");
-  const bodyEl = document.getElementById("sandbox-body-input");
-  const executeBtn = document.getElementById("sandbox-execute-btn");
-  const responseHeader = document.getElementById("sandbox-res-status");
-  const responseTiming = document.getElementById("sandbox-res-time");
-  const responseBody = document.getElementById("sandbox-res-body");
-
-  if (!selectEl) return;
-
-  // Populate endpoint options
-  ENDPOINTS.forEach((ep, idx) => {
-    const opt = document.createElement("option");
-    opt.value = idx;
-    opt.textContent = `${ep.method} ${ep.url}`;
-    selectEl.appendChild(opt);
-  });
-
-  function updateFields() {
-    const current = ENDPOINTS[selectEl.value];
-    inputEl.value = current.url;
-    if (current.method === "POST" && current.body) {
-      bodyEl.style.display = "block";
-      bodyEl.value = current.body;
-    } else {
-      bodyEl.style.display = "none";
-    }
-  }
-
-  selectEl.addEventListener("change", updateFields);
-  updateFields();
-
-  executeBtn.addEventListener("click", async () => {
-    const current = ENDPOINTS[selectEl.value];
-    const url = inputEl.value;
-    const method = current.method;
-    
-    responseBody.textContent = "⏳ Sending request to FastAPI backend...";
-    responseHeader.textContent = "Status: Connecting...";
-    responseTiming.textContent = "Latency: --";
-
-    const startTime = performance.now();
-
-    try {
-      const options = {
-        method: method,
-        headers: {
-          "Accept": "application/json"
-        }
-      };
-
-      if (method === "POST") {
-        options.headers["Content-Type"] = "application/json";
-        options.body = bodyEl.value;
-      }
-
-      const res = await fetch(url, options);
-      const endTime = performance.now();
-      const elapsed = Math.round(endTime - startTime);
-      const processTime = res.headers.get("X-Process-Time-Sec");
-
-      responseHeader.textContent = `HTTP ${res.status} ${res.statusText}`;
-      responseHeader.style.color = res.ok ? "#34d399" : "#f43f5e";
-      responseTiming.textContent = `Roundtrip: ${elapsed}ms | Server: ${processTime ? (parseFloat(processTime)*1000).toFixed(1) + 'ms' : 'FastAPI'}`;
-
-      const data = await res.json();
-      responseBody.textContent = JSON.stringify(data, null, 2);
-    } catch (err) {
-      responseHeader.textContent = "Network Error";
-      responseHeader.style.color = "#f43f5e";
-      responseBody.textContent = `Error: ${err.message}`;
-    }
-  });
-}
-
-window.addEventListener("DOMContentLoaded", initSandbox);
-
-
 // Main Application Logic
 document.addEventListener("DOMContentLoaded", () => {
   fetchOverview();
@@ -1643,7 +1331,6 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchProjects();
   fetchExperience();
   setupContactForm();
-  setupAdminModal();
 });
 
 // Toast notification helper
@@ -1949,107 +1636,6 @@ function setupContactForm() {
       submitBtn.innerHTML = "🚀 Send Message (Async Background Task)";
     }
   });
-}
-
-// 7. Setup Admin Modal & Management
-let adminToken = localStorage.getItem("fastapi_portfolio_jwt");
-
-function setupAdminModal() {
-  const openBtn = document.getElementById("open-admin-btn");
-  const modal = document.getElementById("admin-modal");
-  const closeBtn = document.getElementById("close-admin-btn");
-  const loginForm = document.getElementById("admin-login-form");
-  const dashboardView = document.getElementById("admin-dashboard-view");
-  const loginView = document.getElementById("admin-login-view");
-
-  if (!modal) return;
-
-  openBtn.addEventListener("click", () => {
-    modal.classList.add("active");
-    if (adminToken) {
-      showAdminDashboard();
-    } else {
-      loginView.style.display = "block";
-      dashboardView.style.display = "none";
-    }
-  });
-
-  closeBtn.addEventListener("click", () => {
-    modal.classList.remove("active");
-  });
-
-  loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const u = document.getElementById("admin-user").value;
-    const p = document.getElementById("admin-pass").value;
-
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: u, password: p })
-      });
-      const data = await res.json();
-      if (res.ok && data.access_token) {
-        adminToken = data.access_token;
-        localStorage.setItem("fastapi_portfolio_jwt", adminToken);
-        showToast("Authenticated as Admin!", "success");
-        showAdminDashboard();
-      } else {
-        showToast("Invalid admin credentials", "error");
-      }
-    } catch (err) {
-      showToast(err.message, "error");
-    }
-  });
-
-  async function showAdminDashboard() {
-    loginView.style.display = "none";
-    dashboardView.style.display = "block";
-    loadAdminInbox();
-  }
-
-  async function loadAdminInbox() {
-    const listEl = document.getElementById("admin-inbox-list");
-    if (!listEl) return;
-    listEl.innerHTML = "<p>Loading messages...</p>";
-
-    try {
-      const res = await fetch("/api/contact/inbox", {
-        headers: { "Authorization": `Bearer ${adminToken}` }
-      });
-      const data = await res.json();
-      if (data.success && data.data) {
-        if (data.data.length === 0) {
-          listEl.innerHTML = "<p style='color:var(--text-dim);'>No messages received yet.</p>";
-          return;
-        }
-        listEl.innerHTML = data.data.map(m => `
-          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);padding:14px;border-radius:8px;margin-bottom:10px;">
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-              <strong>${m.name} &lt;${m.email}&gt;</strong>
-              <span style="font-size:0.8rem;color:var(--text-dim);">${new Date(m.created_at).toLocaleDateString()}</span>
-            </div>
-            <div style="color:var(--accent-cyan);font-size:0.85rem;margin-bottom:6px;">Subject: ${m.subject}</div>
-            <p style="font-size:0.9rem;color:var(--text-muted);">${m.message}</p>
-          </div>
-        `).join("");
-      }
-    } catch (err) {
-      listEl.innerHTML = `<p style='color:#ef4444;'>Failed to load inbox: ${err.message}</p>`;
-    }
-  }
-
-  const logoutBtn = document.getElementById("admin-logout-btn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      adminToken = null;
-      localStorage.removeItem("fastapi_portfolio_jwt");
-      loginView.style.display = "block";
-      dashboardView.style.display = "none";
-      showToast("Logged out successfully");
-    });
-  }
 }
 
   </script>
