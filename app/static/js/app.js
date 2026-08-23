@@ -154,7 +154,7 @@ function setupTechFilters() {
     p.tech_stack.forEach(t => tagsSet.add(t));
   });
 
-  const popularTags = ["All", "FastAPI", "Python", "Docker", "PostgreSQL", "LangChain", "WebSockets"];
+  const popularTags = ["All", "FastAPI", "Python", "TensorFlow", "Scikit-learn", "OpenCV", "Machine Learning"];
   filterContainer.innerHTML = "";
 
   popularTags.forEach(tag => {
