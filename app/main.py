@@ -209,17 +209,37 @@ async def custom_openapi_json():
         }
     )
 
+@app.get("/api/debug/openapi", include_in_schema=False)
+async def debug_openapi():
+    import sys, traceback
+    try:
+        schema = app.openapi()
+        return {
+            "success": True,
+            "paths_count": len(schema.get("paths", {})),
+            "size": len(json.dumps(schema)),
+            "python_version": sys.version
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }
+
 @app.get("/docs", include_in_schema=False)
+@app.get("/api/docs", include_in_schema=False)
 async def custom_swagger_ui():
     return get_swagger_ui_html(
-        openapi_url="/openapi.json",
+        openapi_url="/api/openapi.json",
         title=f"{settings.PROJECT_NAME} - Swagger UI",
         swagger_favicon_url="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
     )
 
 @app.get("/redoc", include_in_schema=False)
+@app.get("/api/redoc", include_in_schema=False)
 async def custom_redoc_ui():
     return get_redoc_html(
-        openapi_url="/openapi.json",
+        openapi_url="/api/openapi.json",
         title=f"{settings.PROJECT_NAME} - ReDoc"
     )
