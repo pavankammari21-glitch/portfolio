@@ -64,7 +64,7 @@ app = FastAPI(
     openapi_url=None,
     contact={
         "name": f"{settings.OWNER_NAME} - Developer",
-        "email": settings.ADMIN_EMAIL if (settings.ADMIN_EMAIL and "@" in settings.ADMIN_EMAIL) else "pavan.dev.engineer@gmail.com",
+        "email": settings.ADMIN_EMAIL if (settings.ADMIN_EMAIL and "@" in settings.ADMIN_EMAIL) else "pavankammari6@gmail.com",
         "url": settings.OWNER_GITHUB or "https://github.com"
     },
     license_info={
