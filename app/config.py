@@ -19,7 +19,10 @@ class Settings(BaseModel):
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
     
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./portfolio.db")
+    DATABASE_URL: str = os.getenv(
+        "DATABASE_URL",
+        "sqlite:////tmp/portfolio.db" if os.getenv("VERCEL") == "1" else "sqlite:///./portfolio.db"
+    )
     ALLOWED_ORIGINS: list[str] = ["*"]
     
     # Portfolio owner info
