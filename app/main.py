@@ -106,6 +106,7 @@ async def normalize_vercel_path(request: Request, call_next):
         request.scope["query_string"] = urllib.parse.urlencode(parsed_qs, doseq=True).encode("utf-8")
         target_path = "/" + route_val.lstrip("/") if route_val else "/"
         request.scope["path"] = target_path
+        request.scope["raw_path"] = target_path.encode("utf-8")
     elif raw_path.startswith("/api/index.py") or raw_path.startswith("/api/index"):
         matched = (
             request.headers.get("x-vercel-matched-path")
@@ -114,10 +115,12 @@ async def normalize_vercel_path(request: Request, call_next):
             or request.headers.get("x-forwarded-uri")
         )
         if matched and not (matched.startswith("/api/index.py") or matched.startswith("/api/index")):
-            request.scope["path"] = matched.split("?")[0]
+            target_path = matched.split("?")[0]
         else:
             suffix = raw_path.replace("/api/index.py", "").replace("/api/index", "")
-            request.scope["path"] = suffix if suffix else "/"
+            target_path = suffix if suffix else "/"
+        request.scope["path"] = target_path
+        request.scope["raw_path"] = target_path.encode("utf-8")
             
     return await call_next(request)
 
