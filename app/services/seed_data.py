@@ -98,6 +98,24 @@ def seed_initial_data(db: Session):
             "stars_count": 86
         },
         {
+            "title": "FastAPI Task Manager",
+            "slug": "fastapi-task-manager",
+            "summary": "Full-stack task and workflow management application built with FastAPI, RESTful CRUD APIs, and Tailwind CSS.",
+            "description": (
+                "Engineered a responsive, high-performance task and productivity management system. "
+                "Features complete RESTful CRUD endpoints for task lifecycle management, status filtering, priority classification, "
+                "SQLite persistence, and serverless cloud deployment on Vercel."
+            ),
+            "tech_stack": json.dumps(["FastAPI", "Python", "SQLite", "REST APIs", "Tailwind CSS", "Vercel"]),
+            "category": "Backend & Web",
+            "live_url": "https://fast-api-task-manager-nine.vercel.app/",
+            "github_url": "https://github.com/pavankammari6-wq/fast-api-task_manager",
+            "image_url": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
+            "architecture_notes": "RESTful API architecture, structured Pydantic data modeling, asynchronous route handlers, Tailwind CSS UI, and Vercel serverless deployment.",
+            "is_featured": True,
+            "stars_count": 82
+        },
+        {
             "title": "Breast Cancer Prediction using Logistic Regression",
             "slug": "breast-cancer-prediction-logistic-regression",
             "summary": "Diagnostic machine learning model built with Scikit-learn on the Wisconsin Breast Cancer Dataset achieving over 94% accuracy.",
