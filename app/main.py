@@ -25,12 +25,13 @@ from app.routers import (
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup: Create tables and seed default portfolio data
-    print("[STARTUP] Initializing database tables and models...")
-    Base.metadata.create_all(bind=engine)
-    
-    with SessionLocal() as db:
-        print("[STARTUP] Seeding default developer portfolio data & admin credentials...")
-        seed_initial_data(db)
+    try:
+        Base.metadata.create_all(bind=engine)
+        with SessionLocal() as db:
+            print("[STARTUP] Seeding default developer portfolio data & admin credentials...")
+            seed_initial_data(db)
+    except Exception as e:
+        print(f"[STARTUP DB INIT]: {e}")
         
     print(f"[STARTUP] {settings.PROJECT_NAME} is live and ready!")
     yield
