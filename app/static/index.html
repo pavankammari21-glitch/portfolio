@@ -13,7 +13,936 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="/static/css/style.css">
+  <style>:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111827;
+  --bg-card: rgba(17, 24, 39, 0.7);
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(56, 189, 248, 0.4);
+  --accent-cyan: #38bdf8;
+  --accent-blue: #3b82f6;
+  --accent-purple: #818cf8;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --gradient-glow: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+  --gradient-accent: linear-gradient(135deg, #0ea5e9, #6366f1);
+  --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.15);
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-code: 'JetBrains Mono', 'Fira Code', monospace;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 85% 65%, rgba(129, 140, 248, 0.06) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  z-index: 1000;
+  background: rgba(10, 14, 23, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-main);
+}
+
+.logo-badge {
+  background: var(--gradient-accent);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  font-family: var(--font-code);
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-cyan);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.live-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--accent-emerald);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-code);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  box-shadow: 0 0 10px var(--accent-emerald);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px var(--accent-emerald); }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+}
+
+.btn-primary {
+  background: var(--gradient-accent);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-glass);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.08);
+  color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 160px 0 100px 0;
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 999px;
+  color: var(--accent-cyan);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: var(--font-code);
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.gradient-text {
+  background: var(--gradient-glow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  max-width: 580px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.hero-terminal-card {
+  padding: 24px;
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #10b981; }
+
+.terminal-title {
+  font-size: 0.8rem;
+  font-family: var(--font-code);
+  color: var(--text-dim);
+}
+
+.terminal-body {
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.code-keyword { color: #f43f5e; }
+.code-func { color: #38bdf8; }
+.code-str { color: #34d399; }
+.code-comment { color: #64748b; font-style: italic; }
+
+/* Stats Bar */
+.stats-section {
+  padding: 40px 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  padding: 24px;
+  text-align: center;
+  border-radius: var(--radius-md);
+  transition: transform 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+}
+
+.stat-value {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  font-family: var(--font-code);
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Section Header */
+.section {
+  padding: 90px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-subtitle {
+  color: var(--accent-cyan);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-code);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+/* Skills Matrix */
+.skills-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  background: var(--accent-blue);
+  color: #fff;
+  border-color: var(--accent-blue);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  transition: all 0.25s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.skill-icon-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-icon {
+  font-size: 1.4rem;
+}
+
+.skill-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.skill-percent {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  font-family: var(--font-code);
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--gradient-accent);
+  border-radius: 999px;
+  transition: width 1s ease-in-out;
+}
+
+.skill-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* Projects Showcase */
+.project-filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 28px;
+}
+
+.project-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.project-img-wrapper {
+  height: 190px;
+  position: relative;
+  overflow: hidden;
+  background: #1e293b;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05);
+}
+
+.project-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-glass);
+}
+
+.project-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.project-summary {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.tag-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-code);
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 28px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 70px;
+  margin-bottom: 40px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 20px;
+  top: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 3px solid var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.timeline-card {
+  padding: 24px;
+  border-radius: var(--radius-md);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.timeline-role {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.timeline-org {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.timeline-period {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  font-family: var(--font-code);
+  font-weight: 600;
+}
+
+.timeline-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.timeline-achievements {
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+}
+
+.timeline-achievements li {
+  margin-bottom: 6px;
+}
+
+/* API Sandbox Section */
+.sandbox-card {
+  padding: 30px;
+  border-radius: var(--radius-lg);
+}
+
+.sandbox-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.sandbox-select, .sandbox-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-family: var(--font-code);
+  outline: none;
+}
+
+.sandbox-select:focus, .sandbox-input:focus {
+  border-color: var(--accent-cyan);
+}
+
+.sandbox-input {
+  flex-grow: 1;
+}
+
+.sandbox-response-container {
+  background: #06090e;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.sandbox-response-header {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border-glass);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-family: var(--font-code);
+  color: var(--text-dim);
+}
+
+.sandbox-response-body {
+  padding: 18px;
+  max-height: 380px;
+  overflow-y: auto;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  color: #38bdf8;
+  white-space: pre-wrap;
+}
+
+/* Contact Section */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+}
+
+.contact-info-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+}
+
+.contact-form-card {
+  padding: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-container {
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+/* Toast */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideIn 0.3s ease;
+}
+
+.toast-success {
+  border-left: 4px solid var(--accent-emerald);
+}
+
+.toast-error {
+  border-left: 4px solid #ef4444;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border-glass);
+  padding: 40px 0;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-grid, .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 2.6rem;
+  }
+  .nav-links {
+    display: none;
+  }
+}
+</style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 </head>
 <body>
@@ -374,8 +1303,653 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Scripts -->
-  <script src="/static/js/websocket.js"></script>
-  <script src="/static/js/sandbox.js"></script>
-  <script src="/static/js/app.js"></script>
+  <script>// Real-time WebSocket Telemetry Handler
+class WebSocketClient {
+  constructor() {
+    this.ws = null;
+    this.pingInterval = null;
+    this.reconnectAttempts = 0;
+    this.maxReconnectAttempts = 10;
+  }
+
+  connect() {
+    const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+    const wsUrl = `${protocol}//${window.location.host}/ws/live-stats`;
+
+    console.log("🔌 Connecting to FastAPI WebSocket:", wsUrl);
+    this.ws = new WebSocket(wsUrl);
+
+    this.ws.onopen = () => {
+      console.log("⚡ WebSocket Connected to FastAPI live telemetry!");
+      this.reconnectAttempts = 0;
+      this.updateStatusPill(true);
+      this.startPing();
+    };
+
+    this.ws.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        this.handleMessage(data);
+      } catch (err) {
+        console.warn("WebSocket non-JSON payload:", event.data);
+      }
+    };
+
+    this.ws.onclose = () => {
+      console.log("🔌 WebSocket Disconnected.");
+      this.updateStatusPill(false);
+      this.stopPing();
+      this.attemptReconnect();
+    };
+
+    this.ws.onerror = (err) => {
+      console.error("WebSocket Error:", err);
+    };
+  }
+
+  handleMessage(data) {
+    if (data.type === "visitor_count" || data.type === "handshake") {
+      const visitorsEl = document.getElementById("active-visitors-count");
+      if (visitorsEl && data.active_visitors !== undefined) {
+        visitorsEl.textContent = data.active_visitors;
+      }
+    }
+
+    if (data.type === "pong") {
+      const latencyEl = document.getElementById("ws-latency");
+      if (latencyEl && this.lastPingTime) {
+        const rtt = Math.round(performance.now() - this.lastPingTime);
+        latencyEl.textContent = `${rtt}ms`;
+      }
+    }
+  }
+
+  startPing() {
+    this.stopPing();
+    this.pingInterval = setInterval(() => {
+      if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+        this.lastPingTime = performance.now();
+        this.ws.send(JSON.stringify({ command: "ping" }));
+      }
+    }, 5000);
+  }
+
+  stopPing() {
+    if (this.pingInterval) {
+      clearInterval(this.pingInterval);
+      this.pingInterval = null;
+    }
+  }
+
+  attemptReconnect() {
+    if (this.reconnectAttempts < this.maxReconnectAttempts) {
+      this.reconnectAttempts++;
+      const delay = Math.min(1000 * Math.pow(2, this.reconnectAttempts), 10000);
+      setTimeout(() => this.connect(), delay);
+    }
+  }
+
+  updateStatusPill(online) {
+    const pill = document.getElementById("server-status-pill");
+    if (pill) {
+      if (online) {
+        pill.innerHTML = `<span class="pulse-dot"></span> <span>API ONLINE</span> <span style="opacity:0.6;margin-left:4px;">(<span id="active-visitors-count">1</span> active)</span>`;
+      } else {
+        pill.innerHTML = `<span class="pulse-dot" style="background:#ef4444;box-shadow:0 0 10px #ef4444;"></span> <span>RECONNECTING...</span>`;
+      }
+    }
+  }
+}
+
+window.wsClient = new WebSocketClient();
+window.addEventListener("DOMContentLoaded", () => {
+  window.wsClient.connect();
+});
+</script>
+  <script>// Interactive FastAPI Sandbox Tester
+const ENDPOINTS = [
+  {
+    name: "GET /api/analytics/overview (Platform Stats)",
+    method: "GET",
+    url: "/api/analytics/overview",
+    body: null
+  },
+  {
+    name: "GET /api/projects?featured_only=true (Featured Projects)",
+    method: "GET",
+    url: "/api/projects?featured_only=true",
+    body: null
+  },
+  {
+    name: "GET /api/skills/categorized (Grouped Tech Matrix)",
+    method: "GET",
+    url: "/api/skills/categorized",
+    body: null
+  },
+  {
+    name: "GET /api/experience (Career Timeline)",
+    method: "GET",
+    url: "/api/experience",
+    body: null
+  },
+  {
+    name: "GET /api/analytics/health (Uptime Probe)",
+    method: "GET",
+    url: "/api/analytics/health",
+    body: null
+  },
+  {
+    name: "GET /api/resume/json (Standard JSON Resume)",
+    method: "GET",
+    url: "/api/resume/json",
+    body: null
+  },
+  {
+    name: "POST /api/contact (Async BackgroundTask)",
+    method: "POST",
+    url: "/api/contact",
+    body: JSON.stringify({
+      name: "FastAPI Explorer",
+      email: "recruiter@techventures.com",
+      subject: "Interactive API Test",
+      message: "Testing FastAPI BackgroundTasks and Pydantic validation live from sandbox!"
+    }, null, 2)
+  }
+];
+
+function initSandbox() {
+  const selectEl = document.getElementById("sandbox-endpoint-select");
+  const inputEl = document.getElementById("sandbox-url-input");
+  const bodyEl = document.getElementById("sandbox-body-input");
+  const executeBtn = document.getElementById("sandbox-execute-btn");
+  const responseHeader = document.getElementById("sandbox-res-status");
+  const responseTiming = document.getElementById("sandbox-res-time");
+  const responseBody = document.getElementById("sandbox-res-body");
+
+  if (!selectEl) return;
+
+  // Populate endpoint options
+  ENDPOINTS.forEach((ep, idx) => {
+    const opt = document.createElement("option");
+    opt.value = idx;
+    opt.textContent = `${ep.method} ${ep.url}`;
+    selectEl.appendChild(opt);
+  });
+
+  function updateFields() {
+    const current = ENDPOINTS[selectEl.value];
+    inputEl.value = current.url;
+    if (current.method === "POST" && current.body) {
+      bodyEl.style.display = "block";
+      bodyEl.value = current.body;
+    } else {
+      bodyEl.style.display = "none";
+    }
+  }
+
+  selectEl.addEventListener("change", updateFields);
+  updateFields();
+
+  executeBtn.addEventListener("click", async () => {
+    const current = ENDPOINTS[selectEl.value];
+    const url = inputEl.value;
+    const method = current.method;
+    
+    responseBody.textContent = "⏳ Sending request to FastAPI backend...";
+    responseHeader.textContent = "Status: Connecting...";
+    responseTiming.textContent = "Latency: --";
+
+    const startTime = performance.now();
+
+    try {
+      const options = {
+        method: method,
+        headers: {
+          "Accept": "application/json"
+        }
+      };
+
+      if (method === "POST") {
+        options.headers["Content-Type"] = "application/json";
+        options.body = bodyEl.value;
+      }
+
+      const res = await fetch(url, options);
+      const endTime = performance.now();
+      const elapsed = Math.round(endTime - startTime);
+      const processTime = res.headers.get("X-Process-Time-Sec");
+
+      responseHeader.textContent = `HTTP ${res.status} ${res.statusText}`;
+      responseHeader.style.color = res.ok ? "#34d399" : "#f43f5e";
+      responseTiming.textContent = `Roundtrip: ${elapsed}ms | Server: ${processTime ? (parseFloat(processTime)*1000).toFixed(1) + 'ms' : 'FastAPI'}`;
+
+      const data = await res.json();
+      responseBody.textContent = JSON.stringify(data, null, 2);
+    } catch (err) {
+      responseHeader.textContent = "Network Error";
+      responseHeader.style.color = "#f43f5e";
+      responseBody.textContent = `Error: ${err.message}`;
+    }
+  });
+}
+
+window.addEventListener("DOMContentLoaded", initSandbox);
+</script>
+  <script>// Main Application Logic
+document.addEventListener("DOMContentLoaded", () => {
+  fetchOverview();
+  fetchSkills();
+  fetchProjects();
+  fetchExperience();
+  setupContactForm();
+  setupAdminModal();
+});
+
+// Toast notification helper
+function showToast(message, type = "success") {
+  const container = document.getElementById("toast-container");
+  if (!container) return;
+
+  const toast = document.createElement("div");
+  toast.className = `toast toast-${type}`;
+  toast.innerHTML = `
+    <span>${type === "success" ? "✅" : "⚠️"}</span>
+    <span>${message}</span>
+  `;
+
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateX(100%)";
+    toast.style.transition = "all 0.3s ease";
+    setTimeout(() => toast.remove(), 300);
+  }, 4000);
+}
+
+// 1. Fetch Overview & Stats
+async function fetchOverview() {
+  try {
+    const res = await fetch("/api/analytics/overview");
+    const json = await res.json();
+    if (json.success && json.data) {
+      const stats = json.data.stats;
+      const dev = json.data.developer;
+
+      const pCount = document.getElementById("stat-projects-count");
+      if (pCount) pCount.textContent = stats.total_projects;
+
+      const sCount = document.getElementById("stat-skills-count");
+      if (sCount) sCount.textContent = stats.total_skills;
+
+      const expCount = document.getElementById("stat-exp-count");
+      if (expCount) expCount.textContent = stats.years_experience;
+
+      const apisCount = document.getElementById("stat-apis-count");
+      if (apisCount) apisCount.textContent = stats.apis_engineered;
+    }
+  } catch (err) {
+    console.error("Error fetching overview:", err);
+  }
+}
+
+// 2. Fetch & Render Skills Matrix
+let allSkillsCategorized = [];
+async function fetchSkills() {
+  try {
+    const res = await fetch("/api/skills/categorized");
+    const json = await res.json();
+    if (json.success && json.data) {
+      allSkillsCategorized = json.data;
+      renderSkillsTabs();
+      renderSkills("All");
+    }
+  } catch (err) {
+    console.error("Error loading skills:", err);
+  }
+}
+
+function renderSkillsTabs() {
+  const tabsContainer = document.getElementById("skills-tabs");
+  if (!tabsContainer) return;
+
+  tabsContainer.innerHTML = `<button class="tab-btn active" onclick="filterSkillsCategory('All', this)">All Technologies</button>`;
+  allSkillsCategorized.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.className = "tab-btn";
+    btn.textContent = cat.category;
+    btn.onclick = () => filterSkillsCategory(cat.category, btn);
+    tabsContainer.appendChild(btn);
+  });
+}
+
+function filterSkillsCategory(category, btnEl) {
+  document.querySelectorAll("#skills-tabs .tab-btn").forEach(b => b.classList.remove("active"));
+  btnEl.classList.add("active");
+  renderSkills(category);
+}
+
+function renderSkills(selectedCat) {
+  const grid = document.getElementById("skills-grid");
+  if (!grid) return;
+
+  grid.innerHTML = "";
+  let skillsToDisplay = [];
+
+  if (selectedCat === "All") {
+    allSkillsCategorized.forEach(c => {
+      skillsToDisplay.push(...c.skills);
+    });
+  } else {
+    const matched = allSkillsCategorized.find(c => c.category === selectedCat);
+    if (matched) skillsToDisplay = matched.skills;
+  }
+
+  skillsToDisplay.forEach(s => {
+    const card = document.createElement("div");
+    card.className = "skill-card glass-panel";
+    card.innerHTML = `
+      <div class="skill-header">
+        <div class="skill-icon-name">
+          <span class="skill-icon">${s.icon}</span>
+          <span class="skill-name">${s.name}</span>
+        </div>
+        <span class="skill-percent">${s.proficiency}%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" style="width: ${s.proficiency}%;"></div>
+      </div>
+      <div class="skill-footer">
+        <span>${s.category}</span>
+        <span>${s.experience_years}</span>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// 3. Fetch & Render Projects
+let allProjects = [];
+async function fetchProjects() {
+  try {
+    const res = await fetch("/api/projects?limit=50");
+    const json = await res.json();
+    if (json.success && json.items) {
+      allProjects = json.items;
+      renderProjects(allProjects);
+      setupTechFilters();
+    }
+  } catch (err) {
+    console.error("Error loading projects:", err);
+  }
+}
+
+function setupTechFilters() {
+  const filterContainer = document.getElementById("project-filters");
+  if (!filterContainer) return;
+
+  // Extract unique tech tags
+  const tagsSet = new Set();
+  allProjects.forEach(p => {
+    p.tech_stack.forEach(t => tagsSet.add(t));
+  });
+
+  const popularTags = ["All", "FastAPI", "Python", "Docker", "PostgreSQL", "LangChain", "WebSockets"];
+  filterContainer.innerHTML = "";
+
+  popularTags.forEach(tag => {
+    const btn = document.createElement("button");
+    btn.className = `filter-btn ${tag === 'All' ? 'active' : ''}`;
+    btn.textContent = tag;
+    btn.onclick = () => {
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      if (tag === "All") {
+        renderProjects(allProjects);
+      } else {
+        const filtered = allProjects.filter(p => p.tech_stack.some(t => t.toLowerCase() === tag.toLowerCase()));
+        renderProjects(filtered);
+      }
+    };
+    filterContainer.appendChild(btn);
+  });
+}
+
+function renderProjects(projectsList) {
+  const grid = document.getElementById("projects-grid");
+  if (!grid) return;
+
+  grid.innerHTML = "";
+  if (projectsList.length === 0) {
+    grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-dim);">No matching projects found.</p>`;
+    return;
+  }
+
+  projectsList.forEach(p => {
+    const tagsHtml = p.tech_stack.map(t => `<span class="tag-pill">${t}</span>`).join("");
+    const card = document.createElement("div");
+    card.className = "project-card glass-panel";
+    card.innerHTML = `
+      <div class="project-img-wrapper">
+        <img class="project-img" src="${p.image_url || 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80'}" alt="${p.title}" loading="lazy">
+        <span class="project-badge">${p.category}</span>
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">${p.title}</h3>
+        <p class="project-summary">${p.summary}</p>
+        <div class="project-tags">${tagsHtml}</div>
+        <div class="project-actions">
+          <button class="btn btn-outline btn-sm" onclick='showArchitectureModal(${JSON.stringify(p).replace(/'/g, "&apos;")})'>📐 Architecture</button>
+          ${p.live_url ? `<a href="${p.live_url}" target="_blank" class="btn btn-primary btn-sm">⚡ Live Demo</a>` : ''}
+          ${p.github_url ? `<a href="${p.github_url}" target="_blank" class="btn btn-outline btn-sm">⭐ GitHub</a>` : ''}
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// 4. Architecture Detail Modal
+window.showArchitectureModal = function(project) {
+  const modal = document.getElementById("arch-modal");
+  const modalTitle = document.getElementById("arch-modal-title");
+  const modalDesc = document.getElementById("arch-modal-desc");
+  const modalNotes = document.getElementById("arch-modal-notes");
+  const modalStack = document.getElementById("arch-modal-stack");
+
+  if (!modal) return;
+  modalTitle.textContent = project.title;
+  modalDesc.textContent = project.description;
+  modalNotes.textContent = project.architecture_notes || "Clean REST architecture with asynchronous lifecycle and type-safe contracts.";
+  modalStack.innerHTML = project.tech_stack.map(t => `<span class="tag-pill" style="color:var(--accent-cyan);border-color:var(--accent-cyan);">${t}</span>`).join(" ");
+
+  modal.classList.add("active");
+};
+
+// 5. Fetch & Render Career Timeline
+async function fetchExperience() {
+  try {
+    const res = await fetch("/api/experience");
+    const json = await res.json();
+    if (json.success && json.data) {
+      renderExperience(json.data);
+    }
+  } catch (err) {
+    console.error("Error loading experience:", err);
+  }
+}
+
+function renderExperience(items) {
+  const timeline = document.getElementById("experience-timeline");
+  if (!timeline) return;
+
+  timeline.innerHTML = "";
+  items.forEach(item => {
+    const achievementsHtml = item.key_achievements.map(a => `<li>${a}</li>`).join("");
+    const timelineItem = document.createElement("div");
+    timelineItem.className = "timeline-item";
+    timelineItem.innerHTML = `
+      <div class="timeline-dot"></div>
+      <div class="timeline-card glass-panel">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">${item.role_or_degree}</div>
+            <div class="timeline-org">${item.organization} &bull; <span style="font-size:0.85rem;color:var(--text-dim);">${item.location}</span></div>
+          </div>
+          <span class="timeline-period">${item.period}</span>
+        </div>
+        <p class="timeline-desc">${item.description}</p>
+        <ul class="timeline-achievements">${achievementsHtml}</ul>
+      </div>
+    `;
+    timeline.appendChild(timelineItem);
+  });
+}
+
+// 6. Setup Contact Form with BackgroundTasks
+function setupContactForm() {
+  const form = document.getElementById("contact-form");
+  const submitBtn = document.getElementById("contact-submit-btn");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("contact-name").value.trim();
+    const email = document.getElementById("contact-email").value.trim();
+    const subject = document.getElementById("contact-subject").value.trim();
+    const message = document.getElementById("contact-message").value.trim();
+
+    if (!name || !email || !message) {
+      showToast("Please fill in all required fields", "error");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "⏳ Sending & Triggering BackgroundTasks...";
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, subject, message })
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        showToast(data.message, "success");
+        form.reset();
+      } else {
+        const errMsg = data.error?.message || "Failed to submit message";
+        showToast(errMsg, "error");
+      }
+    } catch (err) {
+      showToast(`Network Error: ${err.message}`, "error");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "🚀 Send Message (Async Background Task)";
+    }
+  });
+}
+
+// 7. Setup Admin Modal & Management
+let adminToken = localStorage.getItem("fastapi_portfolio_jwt");
+
+function setupAdminModal() {
+  const openBtn = document.getElementById("open-admin-btn");
+  const modal = document.getElementById("admin-modal");
+  const closeBtn = document.getElementById("close-admin-btn");
+  const loginForm = document.getElementById("admin-login-form");
+  const dashboardView = document.getElementById("admin-dashboard-view");
+  const loginView = document.getElementById("admin-login-view");
+
+  if (!modal) return;
+
+  openBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+    if (adminToken) {
+      showAdminDashboard();
+    } else {
+      loginView.style.display = "block";
+      dashboardView.style.display = "none";
+    }
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+  });
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const u = document.getElementById("admin-user").value;
+    const p = document.getElementById("admin-pass").value;
+
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: u, password: p })
+      });
+      const data = await res.json();
+      if (res.ok && data.access_token) {
+        adminToken = data.access_token;
+        localStorage.setItem("fastapi_portfolio_jwt", adminToken);
+        showToast("Authenticated as Admin!", "success");
+        showAdminDashboard();
+      } else {
+        showToast("Invalid admin credentials", "error");
+      }
+    } catch (err) {
+      showToast(err.message, "error");
+    }
+  });
+
+  async function showAdminDashboard() {
+    loginView.style.display = "none";
+    dashboardView.style.display = "block";
+    loadAdminInbox();
+  }
+
+  async function loadAdminInbox() {
+    const listEl = document.getElementById("admin-inbox-list");
+    if (!listEl) return;
+    listEl.innerHTML = "<p>Loading messages...</p>";
+
+    try {
+      const res = await fetch("/api/contact/inbox", {
+        headers: { "Authorization": `Bearer ${adminToken}` }
+      });
+      const data = await res.json();
+      if (data.success && data.data) {
+        if (data.data.length === 0) {
+          listEl.innerHTML = "<p style='color:var(--text-dim);'>No messages received yet.</p>";
+          return;
+        }
+        listEl.innerHTML = data.data.map(m => `
+          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);padding:14px;border-radius:8px;margin-bottom:10px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+              <strong>${m.name} &lt;${m.email}&gt;</strong>
+              <span style="font-size:0.8rem;color:var(--text-dim);">${new Date(m.created_at).toLocaleDateString()}</span>
+            </div>
+            <div style="color:var(--accent-cyan);font-size:0.85rem;margin-bottom:6px;">Subject: ${m.subject}</div>
+            <p style="font-size:0.9rem;color:var(--text-muted);">${m.message}</p>
+          </div>
+        `).join("");
+      }
+    } catch (err) {
+      listEl.innerHTML = `<p style='color:#ef4444;'>Failed to load inbox: ${err.message}</p>`;
+    }
+  }
+
+  const logoutBtn = document.getElementById("admin-logout-btn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      adminToken = null;
+      localStorage.removeItem("fastapi_portfolio_jwt");
+      loginView.style.display = "block";
+      dashboardView.style.display = "none";
+      showToast("Logged out successfully");
+    });
+  }
+}
+</script>
 </body>
 </html>
